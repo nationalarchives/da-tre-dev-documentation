@@ -1,16 +1,13 @@
-# MVP architecture
-
-TO DO
+# Beta MVP architecture
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-- [High Level Architecture](#high-level-architecture)
+- [Beta MVP AWS Architecture diagram](#beta-mvp-aws-architecture-diagram)
+    - [Roles used in the solution](#roles-used-in-the-solution)
     - [AWS Services used in the solution](#aws-services-used-in-the-solution)
     - [Integration with Transfer Digital Records (TDR)](#integration-with-transfer-digital-records)
     - [Integration with the Judgments parser](#integration-with-the-judgments-parser)
-    - [AWS Step Functions](#aws-step-functions)
-    - [AWS Fargate](#aws-fargate)
+- [AWS Quotas for the services](#aws-quotas-for-the-services)
 - [AWS Accounts](#aws-accounts)
 - [Terraform](#terraform)
 
@@ -18,11 +15,19 @@ TO DO
 
 TO DO
 
-### High Level Architecture
+### Beta MVP AWS Architecture diagram
 
 The following architecture diagram simplifies the proposed solution for the Beta MVP Transformation pipeline.
 
-![pic1](./diagrams/da-transform-mvp-beta-aws-architecture-diagram.png)
+![pic1](./diagrams/da-transform-beta-mvp-aws-architecture-diagram.png)
+
+#### Roles used in the solution
+
+* Developers
+* DevOps
+* Administrators
+* TNA users
+* Workflow editors
 
 #### AWS Services used in the solution
 
@@ -34,36 +39,39 @@ The following architecture diagram simplifies the proposed solution for the Beta
     * Additionally, you can enhance this solution with the combination of public OIDC endpoint and IRSA. Administrators and Developers can put the IAM role to a specific pod or restrict to a single IP range of the pod to provide fine grained access.
 * [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/), 
 * [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/),
-* [Amazon Simple Notification Service (SNS)](https://aws.amazon.com/sns/)
-* [Amazon Serverless Computing - AWS Lambda](https://aws.amazon.com/lambda/)
-* [Amazon CloudWatch]()
-* [Amazon CloudTrail]()
-* [Amazon GuardDuty]()
-* [Amazon X-Ray]()
+* [Amazon Simple Notification Service (SNS)](https://aws.amazon.com/sns/),
+* [Amazon Serverless Computing - AWS Lambda](https://aws.amazon.com/lambda/),
+* [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/),
+* [Amazon CloudTrail](https://aws.amazon.com/cloudtrail/),
+* [Amazon GuardDuty](https://aws.amazon.com/guardduty/),
+* [Amazon X-Ray](https://aws.amazon.com/xray/),
 
 #### Integration with Transfer Digital Records
 
-To Do
+The Transfer Digital Records service will have two integration points with the Transformation Service:
 
-Question: What happens when there is an invalid checksum?
+1. the service should be able to send a message with metadata in the AWS SQS queue
+2. the AWS S3 bucket where TDR stores the Bagit packages should be accessible by the AWS EKS cluster and the pods where the jobs will run
+
+**Question**: What happens when there is an invalid checksum?
 
 #### Integration with the Judgments parser
 
-* Option-1: run the paser in a lambda function
-* Option-2: wrap the parser in a docker container and use AWS Fargate
+* This parser converts UK judgments from .docx format to XML. It is written in C# and requires .NET 5.0.
+* The source code in GitHub ia available [here](https://github.com/mangiafico/tna-judgments)
+* To execute the parser we have identified the following options:
+    1. Execute the paser in a lambda function
+    2. Wrap the parser in a docker container and use AWS EKS Fargate
 
 #### AWS Step Functions
 
 ![pic2](./diagrams/aws-step-functions-workflow-console.png)
 
 
-##### Quotas
+### AWS Quotas for the services
 
-https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html
+* [Amazon Step Functions Quotas](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html)
 
-#### AWS Fargate
-
-To Do
 
 ### AWS Accounts
 

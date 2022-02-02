@@ -55,7 +55,7 @@ The following architecture diagram simplifies the proposed solution for the Beta
 
 The Transfer Digital Records service will have two integration points with the Transformation Service:
 
-1. the service should be able to send a message with metadata in the AWS SQS queue
+1. the service should be able to send a message with metadata to the AWS SQS queue
 2. the AWS S3 bucket where TDR stores the Bagit packages should be accessible by the AWS EKS cluster and the pods where the jobs will run
 
 **Question**: What happens when there is an invalid checksum?

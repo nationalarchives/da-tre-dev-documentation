@@ -43,6 +43,7 @@ The following architecture diagram simplifies the proposed solution for the Beta
 * [AWS Identity and access management for Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/security-iam.html), IAM administrators control who can be authenticated (signed in) and authorized (have permissions) to use Amazon EKS resources. [OpenID Connect (OIDC) Identity Provider (IDP)](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/) feature allows customers to integrate an OIDC identity provider with the Amazon EKS cluster running Kubernetes version 1.16 or later. With this feature, you can manage user access to your cluster by leveraging existing identity management life cycle through your OIDC identity provider. 
     * Additionally, you can enhance this solution with the combination of public OIDC endpoint and IRSA. Administrators and Developers can put the IAM role to a specific pod or restrict to a single IP range of the pod to provide fine grained access.
 * [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/), 
+    - We need to define and verufy the email domain.
 * [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/),
 * [Amazon Simple Notification Service (SNS)](https://aws.amazon.com/sns/),
 * [Amazon Serverless Computing - AWS Lambda](https://aws.amazon.com/lambda/),

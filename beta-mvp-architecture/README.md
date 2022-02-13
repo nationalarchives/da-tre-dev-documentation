@@ -8,6 +8,7 @@
     - [Integration with Transfer Digital Records (TDR)](#integration-with-transfer-digital-records)
     - [Integration with the Judgments parser](#integration-with-the-judgments-parser)
     - [Workflow Studio for AWS Step Functions](#workflow-studio-for-aws-step-functions)
+    - [AWS Step Function Workflow for TE](#aws-step-function-workflow-for-te)
 - [Quotas for the AWS services](#quotas-for-the-aws-services)
 - [AWS Accounts](#aws-accounts)
 - [Terraform](#terraform)
@@ -78,6 +79,11 @@ The details for the text Parser integration are available [here](./../parser-int
 
 ![pic2](./diagrams/aws-step-functions-workflow-console.png)
 
+#### AWS Step Function Workflow for TE
+
+The following diagram shows the workoflow implemented in AWS Step Function for the Transformation Engine.
+
+![pic3](./diagrams/aws-step-function-workflow-for-te.png)
 
 ### Quotas for the AWS services
 

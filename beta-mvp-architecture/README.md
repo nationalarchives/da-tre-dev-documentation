@@ -59,7 +59,7 @@ The Transfer Digital Records service will have two integration points with the T
 1. the service should be able to send a message with metadata to the AWS SQS queue
 2. the AWS S3 bucket where TDR stores the Bagit packages should be accessible by the AWS EKS cluster and the pods where the jobs will run
 
-**Question**: What happens when there is an invalid checksum?
+The details for the TDR integration are available [here](./../tdr-integration/README.md)
 
 #### Integration with the Judgments parser
 
@@ -69,6 +69,8 @@ To execute the parser we have identified the following options:
 1. Execute the paser in a lambda function
 2. Wrap the parser in a docker container and use AWS EKS Fargate
 3. Call the parser as an external API
+
+The details for the text Parser integration are available [here](./../parser-integration/README.md)
 
 #### Workflow Studio for AWS Step Functions
 

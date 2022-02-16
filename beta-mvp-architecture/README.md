@@ -11,7 +11,7 @@
     - [AWS Step Function Workflow for TE](#aws-step-function-workflow-for-te)
 - [Quotas for the AWS services](#quotas-for-the-aws-services)
 
-### Introduction
+## Introduction
 
 Design an AWS data-transformation infrastructure and pipeline service to securely connect systems. The service will retrieve, transform and send data according to business rules. Initial delivery is an MVP Beta for one data type (Court Judgments in MS Word).
 
@@ -19,13 +19,13 @@ Court judgments are sent to TNA as MS Word documents. The MVP Data Transformatio
 
 The MVP should be designed with a view to future extensibility.
 
-### Beta MVP AWS Architecture diagram
+## Beta MVP AWS Architecture diagram
 
 The following architecture diagram simplifies the proposed solution for the Beta MVP Transformation pipeline.
 
 ![pic1](./diagrams/da-transform-beta-mvp-aws-architecture-diagram.png)
 
-#### Roles used in the solution
+### Roles used in the solution
 
 * Developers
 * DevOps
@@ -33,7 +33,7 @@ The following architecture diagram simplifies the proposed solution for the Beta
 * TNA users
 * Workflow editors
 
-#### AWS Services used in the solution
+### AWS Services used in the solution
 
 * [Amazon Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/getting-started.html), 
 * [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks), gives you the flexibility to start, run, and scale Kubernetes applications in the AWS cloud.
@@ -51,7 +51,7 @@ The following architecture diagram simplifies the proposed solution for the Beta
 * [Amazon GuardDuty](https://aws.amazon.com/guardduty/),
 * [Amazon X-Ray](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-xray-tracing.html), You can use [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) to visualize the components of your state machine, identify performance bottlenecks, and troubleshoot requests that resulted in an error. Your state machine sends trace data to X-Ray, and X-Ray processes the data to generate a service map and searchable trace summaries.
 
-#### Integration with Transfer Digital Records
+### Integration with Transfer Digital Records
 
 The Transfer Digital Records service will have two integration points with the Transformation Service:
 
@@ -60,7 +60,7 @@ The Transfer Digital Records service will have two integration points with the T
 
 The details for the TDR integration are available [here](./../tdr-integration/README.md)
 
-#### Integration with the Judgments parser
+### Integration with the Judgments parser
 
 This parser converts UK judgments from .docx format to XML. It is written in C# and requires .NET 5.0. The source code in GitHub is available [here](https://github.com/mangiafico/tna-judgments).
 
@@ -71,19 +71,19 @@ To execute the parser we have identified the following options:
 
 The details for the text Parser integration are available [here](./../parser-integration/README.md)
 
-#### Workflow Studio for AWS Step Functions
+### Workflow Studio for AWS Step Functions
 
 [Workflow Studio for AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/workflow-studio.html) is a low-code visual workflow designer for Step Functions that lets you create serverless workflows by orchestrating AWS services. Use drag and drop to create and edit workflows, control how input and output is filtered or transformed for each state, and configure error handling. As you create a workflow, Workflow Studio validates your work and auto-generates code. You can review the generated code, or export it for local development or AWS CloudFormation. When you are finished, you can save your workflow, run it, then examine the results in the Step Functions console. You can also use Workflow Studio to prototype new workflows and use your prototypes as the starting point for local development with the AWS Toolkit for Visual Studio Code.
 
 ![pic2](./diagrams/aws-step-functions-workflow-console.png)
 
-#### AWS Step Function Workflow for TE
+### AWS Step Function Workflow for TE
 
 The following diagram shows the workoflow implemented in AWS Step Function for the Transformation Engine.
 
 ![pic3](./diagrams/aws-step-function-workflow-for-te.png)
 
-### Quotas for the AWS services
+## Quotas for the AWS services
 
 * [Amazon Step Functions Quotas](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html)
 * [Known limitations when using Workflow Studio](https://docs.aws.amazon.com/step-functions/latest/dg/workflow-studio-known-limitations.html)

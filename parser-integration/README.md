@@ -26,7 +26,7 @@ The source code of the text parser is stored in a TNA GitHub [repository](https:
 3. An AWS CodeBuild project connetcs to Git service, then retrieves the latest version of the text parser from the Git repository.
 4. AWS CodeBuild builds the text parser from the source code and stores the artefact to AWS ECR.
 5. An AWS Lambda Function is defined using the artefact stored in AWS ECR.
-6. This Lambda Function will be invked by the AWS Step Function. 
+6. This Lambda Function will be invoked by the AWS Step Function. 
 
 ### Data flow
 

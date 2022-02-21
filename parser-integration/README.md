@@ -5,6 +5,7 @@
 - [Architecture Diagram](#architecture-diagram)
     - [Integration](#integration)
     - [Data flow](#data-flow)
+    - [Branch strategy and release cycle](#branch-strategy-and-release-cycle)
 - [References](#references)
 
 ## Introduction
@@ -38,6 +39,18 @@ The source code of the text parser is stored in a TNA GitHub [repository](https:
     2. If the checksum validation fails, the workflow will retry N-times 
     4. If the checksum validation passes, another Lambdda Function will run the text parser against the judgment, which will extract data properties from the text and compile to XML
     5. The outputs of the text parser will be saved to the Parser OUT S3 bucket
+
+### Branch strategy and release cycle
+
+The deployment cycle will follow the GitHub Flow lightweight workflow, and respects the following principles:
+
+1. `master` (or `main`) — this branch contains production code. All development code is merged into master in sometime.
+2. Anything in the `master` branch is deployable
+3. Use feature branches, no direct commits on `master`
+4. Releases are based on `tags`
+5. After someone else has reviewed and signed off on the feature, you can merge it into `master`
+6. Wehn a feature branch is ready for merging, open a `pull request`
+7. Once it is merged and pushed to `master`, you can and should deploy immediately
 
 ## References
 

@@ -19,13 +19,14 @@ The following architecture diagram simplifies the proposed solution for Parser i
 
 ### Integration
 
-The source code of the text parser is stored in a GitHub [repository](https://github.com/mangiafico/tna-judgments). As shown in the above diagram:
-
+The source code of the text parser is stored in a TNA GitHub [repository](https://github.com/nationalarchives/tna-judgments-parser). As shown in the above diagram:
 
 1. Amazon API Gateway receives Git webhook requests and forward them to AWS Lambda.
 2. An AWS Lambda function processes Git webhook requests from API Gateway and invoke an AWS CodeBuild project.
-3. An AWS CodeBuild project connetcs to Git service, then retrieves and uploads the latest version of the Git repository to Amazon CodeCommit.
-4. An AWS Key Management Service (AWS KMS) key to encrypt/decrypt the SSH (Secure Shell) keys used by AWS CodeBuild to connect to Git repository using SSH.
+3. An AWS CodeBuild project connetcs to Git service, then retrieves the latest version of the text parser from the Git repository.
+4. AWS CodeBuild builds the text parser from the source code and stores the artefact to AWS ECR.
+5. An AWS Lambda Function is defined using the artefact stored in AWS ECR.
+6. This Lambda Function will be invoked by the AWS Step Function. 
 
 ### Data flow
 
@@ -40,4 +41,4 @@ The source code of the text parser is stored in a GitHub [repository](https://gi
 
 ## References
 
-- https://aws.amazon.com/quickstart/architecture/git-to-s3-using-webhooks/
+- https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-images.html

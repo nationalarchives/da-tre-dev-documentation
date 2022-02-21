@@ -26,6 +26,8 @@ TE will exchange messages with TDR using an AWS SQS queue as per the [MVP Beta t
 
 ## Credentials exchange and bucket permissions
 
-In the AWS Account where the TE is provisioned there will be an AWS IAM Role with permissions to write to the AWS SQS queue. This IAM Role will be assumed by the TDR system so that it will have the permissions to send a message to the queue.
+In the AWS Account where the TDR system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
+
+TDR IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the TE is provisioned, and TE IAM Roles will have permissions to write a message to the AWS SQS queue where the TDR is provisioned.
 
 The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TDR S3 bucket.

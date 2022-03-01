@@ -10,6 +10,7 @@
     - [Workflow Studio for AWS Step Functions](#workflow-studio-for-aws-step-functions)
     - [AWS Step Function Workflow for TE](#aws-step-function-workflow-for-te)
 - [Quotas for the AWS services](#quotas-for-the-aws-services)
+- [AWS accounts management](#aws-accounts-management)
 
 ## Introduction
 
@@ -93,3 +94,7 @@ The following diagram shows the workoflow implemented in AWS Step Function for t
 * [Amazon Simple Notification Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html)
 * [Service quotas in Amazon SES](https://docs.aws.amazon.com/ses/latest/dg/quotas.html)
 * [Quotas for Amazon GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html)
+
+## AWS accounts management
+
+To Do

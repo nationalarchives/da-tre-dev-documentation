@@ -33,6 +33,6 @@ TE will exchange messages with Editorial system using an AWS SQS queue as per th
 
 In the AWS Account where the Editorial system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments.
 
-Editorial IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the TE is provisioned.
+Editorial IAM Roles will have permissions to subscribe to the AWS SQS queue in the AWS account where the TE is provisioned.
 
 The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TDR S3 bucket.

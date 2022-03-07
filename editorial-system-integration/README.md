@@ -49,7 +49,7 @@ The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS
 The retry mechanism is implemented using an additional AWS SQS queue in the AWS where the TE is deployed, as shown in the diagram above:
 
 1. the editorial system should provide TE with an AWS IAM Role in order to be able to write messages to the queue
-2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" an empty field for "s3-folder-url" 
+2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" and an empty field for "s3-folder-url" 
 ```json
   {
     "consignment-reference": "TDR-2022-C67H",
@@ -60,6 +60,6 @@ The retry mechanism is implemented using an additional AWS SQS queue in the AWS 
 ```
 3. when a new message is sent, the TE will trigger again the text parser stage 
 4. once the text parser stage is complete, TE will notify again the editorial system about the new output from the text parser
-5. the max number of ritries is set to 3
+5. the max number of retries is set to 3
 6. after 3 attempts TE will go to a state error
 7. for each retry, the editorial system will increment the field "number-of-retries"

@@ -97,4 +97,4 @@ The following diagram shows the workoflow implemented in AWS Step Function for t
 
 ## AWS accounts management
 
-To Do
+![pic4](./diagrams/aws-accounts-management.png)

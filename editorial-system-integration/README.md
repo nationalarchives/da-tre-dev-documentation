@@ -10,6 +10,8 @@
 
 ![pic1](../beta-mvp-architecture/diagrams/aws-step-function-workflow-for-te.png)
 
+The integration between the Transformation Engine (TE) and the Editorial system is implemented using an AWS SQS queue in the AWS account where the Editorial system is provisioned. TE will notify Editorial system when the outputs are ready, and will provide one-time credentials for retrieval. The diagram above shows the integration.
+
 The TE will produce the following outputs for the Editorial system:
 1. the data payload (the judgment itself)
 2. the XML outputs of the parser 
@@ -38,15 +40,15 @@ TE will exchange messages with Editorial system using an AWS SQS queue as per th
 
 ## Credentials exchange and bucket permissions
 
-In the AWS Account where the Editorial system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments.
+In the AWS Account where the Editorial system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
 
-Editorial IAM Roles will have permissions to subscribe to the AWS SQS queue in the AWS account where the TE is provisioned.
+TE IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the Editorial system is provisioned, and Editorial IAM Roles will have permissions to write a message to the AWS SQS queue where TE is provisioned.
 
-The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TDR S3 bucket.
+The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TE Court Judgment OUT S3 bucket.
 
 ## Retry mechanism
 
-The retry mechanism is implemented using an additional AWS SQS queue in the AWS where the TE is deployed, as shown in the diagram above:
+The retry mechanism is implemented using an additional AWS SQS queue in the AWS account where the TE is deployed, as shown in the diagram above:
 
 1. the editorial system should provide TE with an AWS IAM Role in order to be able to write messages to the queue
 2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" and an empty field for "s3-folder-url" 

@@ -59,7 +59,7 @@ The details for the TDR integration are available [here](./../tdr-integration/RE
 
 ### Integration with the Judgments parser
 
-This parser converts UK judgments from .docx format to XML. It is written in C# and requires .NET 5.0. The source code in GitHub is available [here](https://github.com/mangiafico/tna-judgments).
+This parser converts UK judgments from .docx format to XML. It is written in C# and requires .NET 5.0. The source code in GitHub is available [here](https://github.com/nationalarchives/tna-judgments-parser).
 
 The details for the text Parser integration are available [here](./../parser-integration/README.md)
 

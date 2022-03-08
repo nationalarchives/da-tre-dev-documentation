@@ -7,6 +7,7 @@
     - [AWS Services used in the solution](#aws-services-used-in-the-solution)
     - [Integration with Transfer Digital Records (TDR)](#integration-with-transfer-digital-records)
     - [Integration with the Judgments parser](#integration-with-the-judgments-parser)
+    - [Integration with the Editorial system](#integration-with-the-editorial-system)
     - [Workflow Studio for AWS Step Functions](#workflow-studio-for-aws-step-functions)
     - [AWS Step Function Workflow for TE](#aws-step-function-workflow-for-te)
 - [Quotas for the AWS services](#quotas-for-the-aws-services)
@@ -54,23 +55,17 @@ The following architecture diagram simplifies the proposed solution for the Beta
 
 ### Integration with Transfer Digital Records
 
-The Transfer Digital Records service will have two integration points with the Transformation Service:
-
-1. the service should be able to send a message with metadata to the AWS SQS queue
-2. the AWS S3 bucket where TDR stores the Bagit packages should be accessible by the AWS EKS cluster and the pods where the jobs will run
-
 The details for the TDR integration are available [here](./../tdr-integration/README.md)
 
 ### Integration with the Judgments parser
 
 This parser converts UK judgments from .docx format to XML. It is written in C# and requires .NET 5.0. The source code in GitHub is available [here](https://github.com/mangiafico/tna-judgments).
 
-To execute the parser we have identified the following options:
-1. Execute the paser in a lambda function
-2. Wrap the parser in a docker container and use AWS EKS Fargate
-3. Call the parser as an external API
-
 The details for the text Parser integration are available [here](./../parser-integration/README.md)
+
+### Integration with the Editorial system
+
+The details for the Editorial system integration are available [here](./../editorial-system-integration/README.md)
 
 ### Workflow Studio for AWS Step Functions
 

@@ -19,8 +19,12 @@ The TE will produce the following outputs for the Editorial system:
 4. a metadata file (in a JSON format) which contains the TE version and the text Parser version, as shown below
 ```json
 {
-  "te-version" : "1.0.0",
-  "text-parser-version" : "1.0.1",
+  "int-te-version" : "1.0.0",
+  "int-text-parser-version" : "1.0.1",
+  "lambda-functions-version": [
+    {"int-te-bagit-checksum-validation" : "0.0.4"},
+    {"int-te-files-checksum-validation" : "0.0.6"}
+  ],
   "uploader-email" : "sample@test.com"
 }
 ```

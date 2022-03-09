@@ -10,7 +10,7 @@
 
 ![pic1](../beta-mvp-architecture/diagrams/aws-step-function-workflow-for-te.png)
 
-The integration between the Transformation Engine (TE) and the Editorial system is implemented using an AWS SQS queue in the AWS account where the Editorial system is provisioned. TE will notify Editorial system when the outputs are ready, and will provide one-time credentials for retrieval. The diagram above shows the integration.
+The integration between the Transformation Engine (TE) and the Editorial system is implemented using an TE AWS SNS and a Lambda function in the AWS account where the Editorial system is provisioned which subscribes to the TE SNS topic. TE will notify Editorial system when the outputs are ready, and will provide one-time credentials for retrieval. The diagram above shows the integration.
 
 The TE will produce the following outputs for the Editorial system:
 1. the data payload (the judgment itself)
@@ -27,7 +27,7 @@ The TE will produce the following outputs for the Editorial system:
 
 ## Message exchange method and format
 
-TE will exchange messages with Editorial system using an AWS SQS queue as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
+TE will exchange messages with Editorial system using an AWS SNS as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
 
 ```json
 {

@@ -20,10 +20,11 @@ The TE will produce the following outputs for the Editorial system:
 ```json
 {
   "int-te-version" : "1.0.0",
-  "int-text-parser-version" : "1.0.1",
+  "text-parser-version" : "v0.2",
   "lambda-functions-version": [
     {"int-te-bagit-checksum-validation" : "0.0.4"},
-    {"int-te-files-checksum-validation" : "0.0.6"}
+    {"int-te-files-checksum-validation" : "0.0.6"},
+    {"int-text-parser-version" : "v0.2"},
   ],
   "uploader-email" : "sample@test.com"
 }

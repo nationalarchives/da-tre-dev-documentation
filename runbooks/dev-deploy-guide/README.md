@@ -40,7 +40,7 @@ prefixed with that of the environment; for example, a Step Function called
     * `staging-tre-state-machine`
     * `prod-tre-state-machine`
 
-The **Management** account is used to host:
+The **management** account is used to host:
 
 * Code pipeline automation processes
 * A root ECR instance that replicates Docker images to the **non-prod** and

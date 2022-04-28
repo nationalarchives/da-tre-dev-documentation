@@ -20,12 +20,12 @@ Function calls to perform operations not covered by built-in tasks.
 The application is deployed across the following account and environment
 hierarchy:
 
-* Account: Main
-  * Account: Management (code pipelines, root ECR instance, parameter store)
-    * Account: non-prod (local ECR instance)
+* Account: **main**
+  * Account: **management** (code pipelines, root ECR instance, parameter store)
+    * Account: **non-prod** (local ECR instance)
       * Environment: `dev`
       * Environment: `int`
-    * Account: prod (local ECR instance)
+    * Account: **prod** (local ECR instance)
       * Environment: `staging`
       * Environment: `prod`
 
@@ -33,18 +33,18 @@ Environment resources are created using IaC (Terraform) and have their names
 prefixed with that of the environment; for example, a Step Function called
 `tre-state-machine` would be deployed as the following entities:
 
-* Account: non-prod:
+* Account: **non-prod**:
     * `dev-tre-state-machine`
     * `int-tre-state-machine`
-* Account: prod:
+* Account: **prod**:
     * `staging-tre-state-machine`
     * `prod-tre-state-machine`
 
-The Management account is used to host:
+The **Management** account is used to host:
 
 * Code pipeline automation processes
-* A root ECR instance that replicates Docker images to the Non-prod and
-    Production accounts
+* A root ECR instance that replicates Docker images to the **non-prod** and
+    **prod** accounts
 * Parameter Store with per-environment settings
 
 # Code Repositories
@@ -147,7 +147,7 @@ updated, some may not; adjust the following steps accordingly:
 
         2. Run the Lambda Function's build script
 
-            > For some images this is: [`lambda_functions/build.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/develop/lambda_functions/build.sh))
+            > For some images this is: [`lambda_functions/build.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/develop/lambda_functions/build.sh)
 
     6. While the Lambda Function version(s) can be updated manually in the
         console for development testing  purposes, ensure the steps in the

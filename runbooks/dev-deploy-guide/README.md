@@ -208,4 +208,5 @@ updated, some may not; adjust the following steps accordingly:
 
 > <sup>1</sup> The change will not be applied until a Terraform update is triggered
 
-> <sup>2</sup> An arbitrary change may be needed to trigger the pipeline
+> <sup>2</sup> An arbitrary change may be needed to trigger the pipeline, or
+    it can be triggered manually in the console

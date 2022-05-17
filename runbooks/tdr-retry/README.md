@@ -3,7 +3,7 @@
 A TDR retry can be triggered using the following manual steps:
 
 1. Find the Consignment's most recent execution in the `Step Functions`
-    section of the AWS console
+    section of the AWS console<sup>1</sup>
 
     > Use the `Search for executions` filter to only show records for a
         particular consignment reference
@@ -34,6 +34,13 @@ A TDR retry can be triggered using the following manual steps:
 
 9. Click the `send message` button
 
-> Re-submitting the last known TDR message to TRE causes the TRE process to
-    fail (because the `number-of-retries` field will already have been
-    processed); the TRE process then sends a retry request message to TDR.
+Re-submitting the last known TDR message to TRE causes the TRE process to fail
+(because the `number-of-retries` field will already have been processed); the
+TRE process then sends a retry request message to TDR.
+
+> <sup>1</sup> An alternative method to identify a consignment's latest TDR
+    `number-of-retries` value is to locate it in the S3 path under one of the
+    TRE process' S3 buckets. In S3 bucket `"${env}-tre-temp"` this value can
+    be found under `"consignments/judgment/${consignment_reference}/"`. In S3
+    bucket `"${env}-tre-editorial-judgment-out"` this value can be found under
+    `"parsed/judgment/${consignment_reference}/"`.

@@ -24,6 +24,7 @@ hierarchy:
   * Account: **management** (code pipelines, root ECR instance, parameter store)
     * Account: **non-prod** (local ECR instance)
       * Environment: `dev`
+      * Environment: `test`
       * Environment: `int`
     * Account: **prod** (local ECR instance)
       * Environment: `staging`
@@ -35,6 +36,7 @@ prefixed with that of the environment; for example, a Step Function called
 
 * Account: **non-prod**:
     * `dev-tre-state-machine`
+    * `test-tre-state-machine`
     * `int-tre-state-machine`
 * Account: **prod**:
     * `staging-tre-state-machine`
@@ -71,6 +73,7 @@ Terraform IaC scripts<sup>*</sup>:
 | Parameter        | Purpose                                            |
 | ---------------- | -------------------------------------------------- |
 | `dev-tfvars`     | Configuration parameters for `dev` environment     |
+| `test-tfvars`    | Configuration parameters for `test` environment    |
 | `int-tfvars`     | Configuration parameters for `int` environment     |
 | `staging-tfvars` | Configuration parameters for `staging` environment |
 | `prod-tfvars`    | Configuration parameters for `prod` environment    |
@@ -84,6 +87,7 @@ Terraform IaC scripts<sup>*</sup>:
 | ------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- |
 | `parser-pipeline`   | Creates Parser ECR Docker images                       | `tna-judgments-parser` tag                                                |
 | `terraform-dev`     | Deploys `dev` branch IaC configuration<sup>*</sup>     | `da-transform-terraform-environments` `dev` branch commit<sup>*</sup>     |
+| `terraform-test`    | Deploys `test` branch IaC configuration<sup>*</sup>    | `da-transform-terraform-environments` `test` branch commit<sup>*</sup>     |
 | `terraform-int`     | Deploys `int` branch IaC configuration<sup>*</sup>     | `da-transform-terraform-environments` `int` branch commit<sup>*</sup>     |
 | `terraform-staging` | Deploys `staging` branch IaC configuration<sup>*</sup> | `da-transform-terraform-environments` `staging` branch commit<sup>*</sup> |
 | `terraform-prod`    | Deploys `prod` branch IaC configuration<sup>*</sup>    | `da-transform-terraform-environments` `prod` branch commit<sup>*</sup>    |
@@ -101,15 +105,20 @@ This section describes how to apply updates to the application environments.
 The process is:
 
 ```
-                             Environments
+                                              Environments
 
-                +-----+   +-----+   +---------+   +------+
-feature/fix --> | dev |-->| int |-->| staging |-->| prod |
-                +-----+   +-----+   +---------+   +------+
-                
-                \______  _______/   \_________  _________/
-                       \/                     \/
-                 non-prod account        prod account
+                                 +-----+
++-- 1 --> feature/fix --+-- 2 -->| dev |
+|            branch     |        +-----+
+|                       |
+|                       |        +------+   +-----+   +---------+   +------+
+|                       +-- 3 -->| test |-->| int |-->| staging |-->| prod |
+|                                +------+   +-----+   +---------+   +------+
+|                                   |
++-----------------------------------+
+
+                                 \___ non-prod ___/   \_______ prod _______/
+                                       account                account
 ```
 
 Some changes may require all [Code Repositories](#code-repositories) be
@@ -166,6 +175,19 @@ updated, some may not; adjust the following steps accordingly:
 
     4. Trigger a Terraform apply by merging the feature branch changes in
         `da-transform-terraform-environments` to the `dev` branch<sup>2</sup>
+
+2. Deploy feature changes into the `test` environment:
+
+    1. Update the Lambda Function version(s) in `test-tfvars` in Parameter Store<sup>1</sup>
+
+    2. Merge any Lambda Function updates in `da-transform-judgments-pipeline`
+        to the `test` branch
+
+    3. Merge any Step Function updates in `da-transform-terraform-modules`
+        to the `dev` branch
+
+    4. Trigger a Terraform apply by merging the feature branch changes in
+        `da-transform-terraform-environments` to the `test` branch<sup>2</sup>
 
 3. Promote changes to the `int` environment:
 

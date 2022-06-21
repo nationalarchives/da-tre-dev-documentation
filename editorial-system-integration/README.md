@@ -10,29 +10,63 @@
 
 ![pic1](../beta-mvp-architecture/diagrams/aws-step-function-workflow-for-te.png)
 
-The integration between the Transformation Engine (TE) and the Editorial system is implemented using an TE AWS SNS and a Lambda function in the AWS account where the Editorial system is provisioned which subscribes to the TE SNS topic. TE will notify Editorial system when the outputs are ready, and will provide one-time credentials for retrieval. The diagram above shows the integration.
+The integration between the Transformation Engine (TRE) and the Editorial system is implemented using an TRE AWS SNS and a Lambda function in the AWS account where the Editorial system is provisioned which subscribes to the TRE SNS topic. TRE will notify Editorial system when the outputs are ready, and will provide one-time credentials for retrieval. The diagram above shows the integration.
 
-The TE will produce the following outputs for the Editorial system:
+The TRE will produce the following outputs for the Editorial system:
 1. the data payload (the judgment itself)
 2. the XML outputs of the parser 
 3. any processing errors so the editorial team can make an assessment on whether the publishing can go ahead
-4. a metadata file (in a JSON format) which contains the TE version and the text Parser version, as shown below
+4. a metadata file (in a JSON format) which contains the TRE version and the text Parser version, as shown below
 ```json
 {
-  "int-te-version" : "1.0.0",
-  "text-parser-version" : "v0.2",
-  "lambda-functions-version": [
-    {"int-te-bagit-checksum-validation" : "0.0.4"},
-    {"int-te-files-checksum-validation" : "0.0.6"},
-    {"int-text-parser-version" : "v0.2"},
-  ],
-  "uploader-email" : "sample@test.com"
+  "producer": {
+    "name": "TRE",
+    "process": "transform",
+    "type": "judgment"
+  },
+  "parameters": {
+    "TRE": {
+      "reference": "TRE-TDR-2022-DGQ",
+      "payload": {
+        "filename": "Cook UK v Boston Scientific - Approved Judgment - 08.03.22 (004).docx",
+        "xml": "TDR-2022-DGQ.xml",
+        "metadata": "TRE-TDR-2022-DGQ-metadata.json",
+        "images": [
+          "image1.png"
+        ],
+        "log": "parser.log"
+      }
+    },
+    "PARSER": {
+      "uri": "https://caselaw.nationalarchives.gov.uk/id/ewhc/pat/2022/504",
+      "court": "EWHC-Chancery-Patents",
+      "cite": "[2022] EWHC 504 (Pat)",
+      "date": "2022-03-08",
+      "name": null,
+      "attachments": [ ],
+      "error-messages": [ ]
+    },
+    "TDR": {
+      "Consignment-Type": "judgment",
+      "Bag-Creator": "TDRExportv0.0.87",
+      "Consignment-Start-Datetime": "2022-06-21T17:10:19Z",
+      "Consignment-Series": "",
+      "Source-Organization": "HM Courts and Tribunals Service",
+      "Contact-Name": "Pauline Drewett",
+      "Internal-Sender-Identifier": "TDR-2022-DGQ",
+      "Consignment-Completed-Datetime": "2022-06-21T17:12:06Z",
+      "Consignment-Export-Datetime": "2022-06-21T17:12:57Z",
+      "Contact-Email": "pauline.drewett@justice.gov.uk",
+      "Payload-Oxum": "43102.1",
+      "Bagging-Date": "2022-06-21"
+    }
+  }
 }
 ```
 
 ## Message exchange method and format
 
-TE will exchange messages with Editorial system using an AWS SNS as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
+TRE will exchange messages with Editorial system using an AWS SNS as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
 
 ```json
 {
@@ -45,17 +79,17 @@ TE will exchange messages with Editorial system using an AWS SNS as per the [MVP
 
 ## Credentials exchange and bucket permissions
 
-In the AWS Account where the Editorial system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
+In the AWS Account where the Editorial system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TRE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
 
-TE IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the Editorial system is provisioned, and Editorial IAM Roles will have permissions to write a message to the AWS SQS queue where TE is provisioned.
+TRE IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the Editorial system is provisioned, and Editorial IAM Roles will have permissions to write a message to the AWS SQS queue where TRE is provisioned.
 
-The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TE Court Judgment OUT S3 bucket.
+The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TRE Court Judgment OUT S3 bucket.
 
 ## Retry mechanism
 
-The retry mechanism is implemented using an additional AWS SQS queue in the AWS account where the TE is deployed, as shown in the diagram above:
+The retry mechanism is implemented using an additional AWS SQS queue in the AWS account where the TRE is deployed, as shown in the diagram above:
 
-1. the editorial system should provide TE with an AWS IAM Role in order to be able to write messages to the queue
+1. the editorial system should provide TRE with an AWS IAM Role in order to be able to write messages to the queue
 2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" and an empty field for "s3-folder-url" 
 ```json
   {
@@ -65,8 +99,8 @@ The retry mechanism is implemented using an additional AWS SQS queue in the AWS 
     "number-of-retries": 1
   }
 ```
-3. when a new message is sent, the TE will trigger again the text parser stage 
-4. once the text parser stage is complete, TE will notify again the editorial system about the new output from the text parser
+3. when a new message is sent, the TRE will trigger again the text parser stage 
+4. once the text parser stage is complete, TRE will notify again the editorial system about the new output from the text parser
 5. the max number of retries is set to 3
-6. after 3 attempts TE will go to a state error
+6. after 3 attempts TRE will go to a state error
 7. for each retry, the editorial system will increment the field "number-of-retries"

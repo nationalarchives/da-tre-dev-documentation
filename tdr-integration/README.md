@@ -10,11 +10,11 @@
 
 ![pic1](../beta-mvp-architecture/diagrams/aws-step-function-workflow-for-te.png)
 
-Transfer Digital Record (TDR) will produce a [BagIt package](https://datatracker.ietf.org/doc/html/rfc8493) containing the judgment and technical metadata extracted as part of the existing TDR processes. TDR will notify Transformation Engine (TE) that the package is ready, and will provide one-time credentials for retrieval.
+Transfer Digital Record (TDR) will produce a [BagIt package](https://datatracker.ietf.org/doc/html/rfc8493) containing the judgment and technical metadata extracted as part of the existing TDR processes. TDR will notify Transformation Engine (TRE) that the package is ready, and will provide one-time credentials for retrieval.
 
 ## Message exchange method and format
 
-TE will exchange messages with TDR using an AWS SQS queue as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
+TRE will exchange messages with TDR using an AWS SQS queue as per the [MVP Beta technical design](./../beta-mvp-architecture/README.md). The message will have the following format:
 
 ```json
 {
@@ -28,9 +28,9 @@ TE will exchange messages with TDR using an AWS SQS queue as per the [MVP Beta t
 
 ## Credentials exchange and bucket permissions
 
-In the AWS Account where the TDR system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
+In the AWS Account where the TDR system is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environments. In the same way, in the AWS Account where the TRE is provisioned there will be AWS IAM Roles defined, based on prod and non-prod environaments.
 
-TDR IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the TE is provisioned, and TE IAM Roles will have permissions to write a message to the AWS SQS queue where the TDR is provisioned.
+TDR IAM Roles will have permissions to write a message to the AWS SQS queue in the AWS account where the TRE is provisioned, and TRE IAM Roles will have permissions to write a message to the AWS SQS queue where the TDR is provisioned.
 
 The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) to retrieve the objects from the TDR S3 bucket.
 
@@ -38,7 +38,7 @@ The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS
 
 The retry mechanism is implemented using an additional AWS SQS queue in the AWS where the TDR system is deployed, as shown in the diagram above:
 
-1. the TE should provide TDR system with an AWS IAM Role in order to be able to write messages to the queue
+1. the TRE should provide TDR system with an AWS IAM Role in order to be able to write messages to the queue
 2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries", and an empty field for "s3-bagit-url" and "s3-sha-url"
 ```json
 {
@@ -50,7 +50,7 @@ The retry mechanism is implemented using an additional AWS SQS queue in the AWS 
 }
 ```
 3. when a new message is sent, the TDR will trigger again the process
-4. once the TDR process is complete, TDR will notify again TE about the new output in the TDR S3 bucket
+4. once the TDR process is complete, TDR will notify again TRE about the new output in the TDR S3 bucket
 5. the max number of retries is set to 3
-6. after 3 attempts TE will go to a state error
-7. for each retry, TE will increment the field "number-of-retries"
+6. after 3 attempts TRE will go to a state error
+7. for each retry, TRE will increment the field "number-of-retries"

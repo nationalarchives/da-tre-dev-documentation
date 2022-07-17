@@ -99,12 +99,12 @@ This too, helps remove custom glue code that only serves the purpose of transfor
 
 #### Summary
 
-EventBridge supports a lot more targets, meaning you can integrate between a wider variety of services
-EventBridges cross-account delivery capability further amplifies its reach. It’s easy to distribute events to Kinesis, Step Functions, and many other services running in another AWS account
-EventBridge supports native AWS events as well as third-party partner events.
-EventBridge supports content-based filtering.
-EventBridge supports input transformation.
-EventBridge has built-in schema discovery capabilities.
+1. EventBridge supports a lot more targets, meaning you can integrate between a wider variety of services
+2. EventBridges cross-account delivery capability further amplifies its reach. It’s easy to distribute events to Kinesis, Step Functions, and many other services running in another AWS account
+3. EventBridge supports native AWS events as well as third-party partner events.
+4. EventBridge supports content-based filtering.
+5. EventBridge supports input transformation.
+6. EventBridge has built-in schema discovery capabilities.
 
 
 ## Option-3 - Multiple SNS topics and SQS queues with fan-out

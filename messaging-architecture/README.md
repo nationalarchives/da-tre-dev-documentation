@@ -8,7 +8,9 @@
 - [Event-Driven Architecture](#event-driven-architecture)
     - [AWS EventBridge](#aws-eventbridge)
 - [Option-1 - Single SNS topic and multiple SQS queue with fan-out](#option-1---single-sns-topic-and-multiple-sqs-queue-with-fan-out)
-- [Option-2 - Single SNS topic with AWS EventBridge](#option-2---single-sns-topic-with-aws-eventbridge)
+    - [SNS Subscription Filter Policies](#sns-subscription-filter-policies)
+- [Option-2 - Single SNS topic with AWS EventBridge](#option-2---aws-eventbridge)
+    - [SNS vs EventBridge](#sns-vs-eventbridge)
 - [Option-3 - Multiple SNS topics and SQS queues with fan-out](#option-3---multiple-sns-topics-and-sqs-queues-with-fan-out)
 - [References](#references)
 
@@ -55,13 +57,55 @@ EventBridge connects applications using events. An event is a signal that a syst
 
 ![pic3](./diagrams/tre-exchange-messages-option1.png)
 
-TO DO
+### SNS Subscription Filter Policies
 
-## Option-2 - Single SNS topic with AWS EventBridge 
+By default, an Amazon SNS topic subscriber receives every message published to the topic. To receive a subset of the messages, a subscriber must assign a filter policy to the topic subscription. A filter policy is a simple JSON object containing attributes that define which messages the subscriber receives.
+
+When you publish a message to a topic, Amazon SNS compares the message attributes to the attributes in the filter policy for each of the topic's subscriptions. If any of the attributes match, Amazon SNS sends the message to the subscriber. Otherwise, Amazon SNS skips the subscriber without sending the message.
+
+## Option-2 - AWS EventBridge 
 
 ![pic4](./diagrams/tre-exchange-messages-option2.png)
 
-TO DO
+### SNS vs EventBridge
+
+#### More number of targets
+
+SNS is a well-known event-sourcing service. It really shines when the throughput is very high, up into the millions of TPS. EventBridge, meanwhile, supports [400 requests per second only](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html). 
+
+However, the number of targets supported by SNS is limited compared to EventBridge.
+
+For example, if an event needs to trigger Step Functions, it cannot do it directly as it is not available as a target. It needs to call a Lambda function, and that can trigger the Step Functions. On the other hand, EventBridge supports 17 targets as of now. But, each Rule in EventBridge can configure a maximum of 5 targets.
+
+#### Contet-based filtering
+SNS scales practically infinitely, but filtering is limited to attributes, not event content. 
+
+Being able to do content-based filtering means it’s possible to have a single event bus for all publishers. Whereas with SNS you often have to have multiple topics to ensure subscribers only receive the events they need. Having a single, centralized event bus is much simpler to manage, especially when you have the ability to register and discover event schemas (see below).
+
+#### Schema discovery
+
+A common challenge with event-driven architecture is identifying and versioning event schemas. EventBridge deals with this challenge with its Schema Registry.
+
+- It provides the schema for all AWS events out-of-the-box.
+- You can also enable schema discovery on both the default event bus as well as any custom event buses you have created.
+- Once enabled, EventBridge would sample ingested events and auto-generate the schema definitions.
+- From here, you can generate language bindings (for Java, Python and TypeScript) and [browse these schemas in VS Code using the AWS Toolkit.](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/eventbridge-schemas.html)
+
+#### Input transformation
+
+Another powerful feature of EventBridge is that it allows you to [transform the event](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-input-transformer-tutorial.html) before passing it as input to the target(s).
+
+This too, helps remove custom glue code that only serves the purpose of transforming the payload.
+
+#### Summary
+
+EventBridge supports a lot more targets, meaning you can integrate between a wider variety of services
+EventBridges cross-account delivery capability further amplifies its reach. It’s easy to distribute events to Kinesis, Step Functions, and many other services running in another AWS account
+EventBridge supports native AWS events as well as third-party partner events.
+EventBridge supports content-based filtering.
+EventBridge supports input transformation.
+EventBridge has built-in schema discovery capabilities.
+
 
 ## Option-3 - Multiple SNS topics and SQS queues with fan-out
 
@@ -76,4 +120,4 @@ TO DO
 - https://medium.com/aws-in-plain-english/event-driven-architecture-implement-the-fan-out-messaging-pattern-in-aws-using-terraform-f58234d9e208
 - https://aws.amazon.com/blogs/compute/building-an-event-driven-application-with-amazon-eventbridge/
 - https://docs.aws.amazon.com/sns/latest/dg/sns-message-attributes.html
-- 
+- https://lumigo.io/blog/5-reasons-why-you-should-use-eventbridge-instead-of-sns/

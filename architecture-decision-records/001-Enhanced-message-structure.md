@@ -1,4 +1,4 @@
-# Architecture on messaging
+# Enhanced message structure
 
 Date: 21-07-2022
 
@@ -8,7 +8,7 @@ Proposed
 
 ## Context
 
-The current message structure is very TDR TRE specific. We would like a more generic structure for future extensibility
+The current message structure is very TDR-TRE specific. We would like a more generic structure for future extensibility
 
 ## Decision
 

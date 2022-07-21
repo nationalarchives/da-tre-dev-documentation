@@ -1,4 +1,4 @@
-# Architecture on messaging
+# New messaging architecture
 
 Date: 21-07-2022
 

@@ -8,7 +8,9 @@ Proposed
 
 ## Context
 
-The current message structure is very TDR-TRE specific. We would like a more generic structure for future extensibility
+The current message structure is very TDR-TRE specific. We would like a more generic structure for future extensibility.
+
+> Phil, anything else to add here?
 
 ## Decision
 
@@ -158,4 +160,5 @@ If Access need t retry the message would be as
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+> What becomes easier or more difficult to do because of this change?
+> Phil, anything to add here?

@@ -10,6 +10,11 @@ Proposed
 
 The new [Enhanced message structure](./001-Enhanced-message-structure.md) requires a new architecture on messaging exchange between TRE and other systems.
 
+The new architecture has to follow the Event-driven approach, with 
+- event producers, 
+- event bus, 
+- event consumers.
+
 > Phil, can you add more details in this section about the future plan?
 
 ## Options considered
@@ -22,7 +27,7 @@ The following is now proposed as the new messaging architecture:
 
 ![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
 
-TRE will have two SNS topics:
+TRE will have two SNS topics with the [fan-out pattern](../technology-considerations/messaging-architecture/README.md):
 
 - **tre-in** where producers will send messages to TRE
 - **tre-out** where consumers will receive messages from TRE
@@ -44,4 +49,5 @@ The event bus is implemented using SNS topics and there is no logic for routing 
 
 With this architecture any integration with TRE is much more simpler, the new service has to subscribe to the two topics **tre-in** and **tre-out**. 
 
-What becomes easier or more difficult to do because of this change?
+> What becomes easier or more difficult to do because of this change?
+> Phil, anything else to add?

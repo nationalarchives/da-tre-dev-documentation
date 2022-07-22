@@ -11,7 +11,7 @@
     - [SNS Subscription Filter Policies](#sns-subscription-filter-policies)
 - [Option-2 - Single SNS topic with AWS EventBridge](#option-2---aws-eventbridge)
     - [SNS vs EventBridge](#sns-vs-eventbridge)
-- [Option-3 - Multiple SNS topics and SQS queues with fan-out](#option-3---multiple-sns-topics-and-sqs-queues-with-fan-out)
+- [Option-3 - Hybrid solution](#option-3---multiple-sns-topics-and-sqs-queues-with-fan-out)
 - [Recommendations](#recommendations)
 - [References](#references)
 
@@ -108,7 +108,7 @@ This too, helps remove custom glue code that only serves the purpose of transfor
 6. EventBridge has built-in schema discovery capabilities.
 
 
-## Option-3 - Multiple SNS topics and SQS queues with fan-out
+## Option-3 - Hybrid solution
 
 ![pic5](./diagrams/tre-exchange-messages-option3.png)
 

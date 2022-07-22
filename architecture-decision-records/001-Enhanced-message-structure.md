@@ -92,8 +92,8 @@ TRE should also send any errors that caused the retry
 ```
 
 > _Questions_: 
-> - Why do we require multiple process-UUID? Which process-UUID would someone use to diagnose an issue using the message logs?
-> - Shall we remove the retry limit? What about when the retry limit is exceeded? Should TRE send another message?
+> - Why do we require multiple process-UUID? Which process-UUID would someone use to diagnose an issue using the message logs? This is the history section for the messsages, and UUID are unique for each message and everything touches this message should attach a new UUID if raising a new event.
+> - Shall we remove the retry limit? What about when the retry limit is exceeded? Should TRE send another message? The limit is still valid, and the consumer should raise a new event informing the retry limit has been reached.
 
 ### TRE to Access
 

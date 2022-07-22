@@ -111,8 +111,6 @@ This too, helps remove custom glue code that only serves the purpose of transfor
 
 ![pic5](./diagrams/tre-exchange-messages-option3.png)
 
-TO DO
-
 ## References
 
 - https://aws.amazon.com/event-driven-architecture/

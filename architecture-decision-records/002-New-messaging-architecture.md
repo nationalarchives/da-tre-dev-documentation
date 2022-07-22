@@ -8,11 +8,17 @@ Proposed
 
 ## Context
 
-What is the issue that we're seeing that is motivating this decision or change?
+The new [Enhanced message structure](./001-Enhanced-message-structure.md) requires a new architecture on messaging exchange.
+
+## Options considered
+
+See document [New messaging architecture](../technology-considerations/messaging-architecture/README.md) in the technology considerations folder.
 
 ## Decision
 
-What is the change that we're proposing and/or doing?
+The decision is to adopt option-3, which is shown below:
+
+![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
 
 ## Consequences
 

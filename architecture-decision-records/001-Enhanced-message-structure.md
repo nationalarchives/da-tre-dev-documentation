@@ -89,6 +89,11 @@ TRE should also send any errors that caused the retry
 }
 ```
 
+Questions: 
+
+ - Why do we require multiple process-UUID? Which process-UUID would someone use to diagnose an issue using the message logs?
+ - Shall we remove the retry limit? What about when the retry limit is exceeded? Should TRE send another message?
+
 ### TRE to Access
 
 ```JSON

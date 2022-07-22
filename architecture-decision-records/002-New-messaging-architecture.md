@@ -8,15 +8,15 @@ Proposed
 
 ## Context
 
-The new [Enhanced message structure](./001-Enhanced-message-structure.md) requires a new architecture on messaging exchange.
+The new [Enhanced message structure](./001-Enhanced-message-structure.md) requires a new architecture on messaging exchange from TRE to other different systems.
 
 ## Options considered
 
-See document [New messaging architecture](../technology-considerations/messaging-architecture/README.md) in the technology considerations folder.
+See document [New messaging architecture](../technology-considerations/messaging-architecture/README.md) in the [technology considerations](../technology-considerations/) folder.
 
 ## Decision
 
-The following is now proosed as the new messaging architecture:
+The following is now proposed as the new messaging architecture:
 
 ![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
 

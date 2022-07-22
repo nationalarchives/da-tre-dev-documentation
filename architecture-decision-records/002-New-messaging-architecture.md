@@ -16,9 +16,19 @@ See document [New messaging architecture](../technology-considerations/messaging
 
 ## Decision
 
-The decision is to adopt option-3, which is shown below:
+The following is now proosed as the new messaging architecture:
 
 ![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
+
+TRE will have two SNS topics:
+
+- tre-in where producers will send messages to TRE
+- tre-out where consumers will receive messages from TRE
+
+The diagram includes the Parser separation and two additional topics:
+
+- parser-in where producers will send messages to the Parser Step Function
+- parser-out where consumers will receive messages from the Parser Setp Function
 
 ## Consequences
 

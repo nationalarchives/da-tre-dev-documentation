@@ -160,5 +160,7 @@ If Access need t retry the message would be as
 
 ## Consequences
 
+The message could become quite big depending on the number of consumers and producers. 
+
 > What becomes easier or more difficult to do because of this change?
-> Phil, anything to add here?
+> Phil, anything to add here (e.g. Schema for the message structure)?

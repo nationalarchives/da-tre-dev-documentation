@@ -12,6 +12,7 @@
 - [Option-2 - Single SNS topic with AWS EventBridge](#option-2---aws-eventbridge)
     - [SNS vs EventBridge](#sns-vs-eventbridge)
 - [Option-3 - Multiple SNS topics and SQS queues with fan-out](#option-3---multiple-sns-topics-and-sqs-queues-with-fan-out)
+- [Recommendations](#recommendations)
 - [References](#references)
 
 ## AWS fan-out pattern
@@ -110,6 +111,14 @@ This too, helps remove custom glue code that only serves the purpose of transfor
 ## Option-3 - Multiple SNS topics and SQS queues with fan-out
 
 ![pic5](./diagrams/tre-exchange-messages-option3.png)
+
+## Recommendations
+
+The [400 requests per second only](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html) is a limit for TRE, as well as the route rules to implement in the event bus for delivering a message to a specific consumer. 
+
+TNA wants to build an Event-driven architecture where consumers receive all the messages and the logic for filtering the messages is part of the consumer implementation; with this approach there is not any dependency between the event bus and the consumers. The event bus can be implemented using SNS topcis and all the consumers subscribed to a topic will receive the messages sent by the producers.
+
+The recommendation is to adopt option-3.
 
 ## References
 

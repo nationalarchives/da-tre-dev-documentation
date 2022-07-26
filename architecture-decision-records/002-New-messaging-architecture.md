@@ -12,7 +12,6 @@ The new [Enhanced message structure](./001-Enhanced-message-structure.md) requir
 
 The new architecture has to follow the Event-driven approach, with 
 - event producers, 
-- event bus, 
 - event consumers.
 
 > Phil, can you add more details in this section about the future plan?
@@ -27,15 +26,18 @@ The following is now proposed as the new messaging architecture:
 
 ![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
 
-TRE will have two SNS topics with the [fan-out pattern](../technology-considerations/messaging-architecture/README.md):
+TRE will have two SNS topics:
 
-- **tre-in** where producers will send messages to TRE
-- **tre-out** where consumers will receive messages from TRE
+- **tre-in** where external systems/services can subscribe and become producers in order to send messages to TRE
+- **tre-out** where external systems/services can subsribe and become consumers in order to consume messages from TRE
 
-The diagram includes the Parser separation and two additional topics:
+The topics will not define any SNS rules to filter the messages: the consumers are responsable of filtering the messages, accepting or rejecting them based on their implementation.
 
-- **parser-in** where producers will send messages to the Parser Step Function
-- **parser-out** where consumers will receive messages from the Parser Setp Function
+There will be an additional SNS topic called **tre-internal** which is dedicated to internal routing, this topic can filter messages and trigger specific AWS step functions.
+
+> Zaizi wants to propose the useage of AWS EventBridge for the internal message routing, the advantages with this approach will be:
+> - the integration with EventBrigde and Step Function will be much more easier
+> - with EventBridge we can filter the content of the message, there is no need to use SNS attributes
 
 For more details about the integrations between TRE and other systems have a look at the following pages:
 
@@ -45,9 +47,9 @@ For more details about the integrations between TRE and other systems have a loo
 
 ## Consequences
 
-The event bus is implemented using SNS topics and there is no logic for routing the messages to a specific consumer: the consumers are responsable of filtering the messages, accepting or rejecting them based on their implementation. With this approach there is not any dependency between the event bus and the consumers.
+With this architecture any integration with TRE is much more simpler, any new service can be a producer and/or a consumer by subscribing to the two topics **tre-in** and **tre-out**. 
 
-With this architecture any integration with TRE is much more simpler, the new service has to subscribe to the two topics **tre-in** and **tre-out**. 
+A monitoring tool system can easly consumes messages from **tre-out** topic.
 
 > What becomes easier or more difficult to do because of this change?
 > Phil, anything else to add?

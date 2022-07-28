@@ -1,6 +1,6 @@
 # New messaging architecture
 
-Date: 21-07-2022
+Date: 28-07-2022
 
 ## Status
 
@@ -34,10 +34,6 @@ TRE will have two SNS topics:
 The topics will not define any SNS rules to filter the messages: the consumers are responsable of filtering the messages, accepting or rejecting them based on their implementation.
 
 There will be an additional SNS topic called **tre-internal** which is dedicated to internal routing, this topic can filter messages and trigger specific AWS step functions.
-
-> Zaizi wants to propose the useage of AWS EventBridge for the internal message routing, the advantages with this approach will be:
-> - the integration with EventBrigde and Step Function will be much more easier
-> - with EventBridge we can filter the content of the message, there is no need to use SNS attributes
 
 For more details about the integrations between TRE and other systems have a look at the following pages:
 

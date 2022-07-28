@@ -114,7 +114,7 @@ This too, helps remove custom glue code that only serves the purpose of transfor
 
 ## Recommendations
 
-The [400 requests per second only](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html) is a limit for TRE, as well as the route rules to implement in the event bus for delivering a message to a specific consumer. 
+The [1,200 requests per second only](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html) is a limit for TRE in the London region eu-west-2, as well as the route rules to implement in the event bus for delivering a message to a specific consumer. 
 
 TNA wants to build an Event-driven architecture where consumers receive all the messages and the logic for filtering the messages is part of the consumer implementation; with this approach there is not any dependency between the event bus and the consumers. The event bus can be implemented using SNS topcis and all the consumers subscribed to a topic will receive the messages sent by the producers.
 
@@ -124,6 +124,7 @@ The recommendation is to adopt option-3.
 
 - https://aws.amazon.com/event-driven-architecture/
 - https://aws.amazon.com/eventbridge/
+- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-quota.html
 - https://medium.com/aws-in-plain-english/event-driven-architecture-implement-the-fan-out-messaging-pattern-in-aws-using-terraform-f58234d9e208
 - https://aws.amazon.com/blogs/compute/building-an-event-driven-application-with-amazon-eventbridge/
 - https://docs.aws.amazon.com/sns/latest/dg/sns-message-attributes.html

@@ -1,6 +1,6 @@
 # Enhanced message structure
 
-Date: 21-07-2022
+Date: 28-07-2022
 
 ## Status
 
@@ -33,7 +33,7 @@ TDR creates a UUID and states who produce it why and the parameters
 ```JSON
 {
   "UUIDs" : [
-    { "Process-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"}
+    { "TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"}
   ],
   "producer" : {
      "name" : "TDR",
@@ -67,8 +67,8 @@ TRE should also send any errors that caused the retry
 ```JSON
 {
   "UUIDs" : [
-	  {"Process-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"} ,
-	  {"Process-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
+	  {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"} ,
+	  {"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
   ],
   "producer" : {
     "name" : "TRE",
@@ -90,20 +90,6 @@ TRE should also send any errors that caused the retry
 	}
 }
 ```
-
-> Zaizi wants to propose a new structure for the UUID section:
-> ```json
-> "UUIDs" : [
-> 	  {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"} ,
->	  {"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
->  ],
-> ```
-> Basically each service which consumes the message and adds new information in it will produce a UUID which tracks the service name, e.g. TDR-UUID, TRE-UUID, etc.
-
-
-> _Questions_: 
-> - Why do we require multiple process-UUID? Which process-UUID would someone use to diagnose an issue using the message logs? This is the history section for the messsages, and UUID are unique for each message and everything touches this message should attach a new UUID if raising a new event.
-> - Shall we remove the retry limit? What about when the retry limit is exceeded? Should TRE send another message? The limit is still valid, and the consumer should raise a new event informing the retry limit has been reached.
 
 ### TRE to Access
 
@@ -142,9 +128,9 @@ If Access need t retry the message would be as
 ```JSON
 {
     "UUIDs": [
-  	{"Process-UUID": "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
-  	{"Process-UUID": "0097675d-a1fc-46c0-a6c7-e45467696792"},
-  	{"Process-UUID": "0094551e-a1fc-46c0-a6c7-e45465455455"}
+  	{"TDR-UUID": "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
+  	{"TRE-UUID": "0097675d-a1fc-46c0-a6c7-e45467696792"},
+  	{"TRE-UUID": "0094551e-a1fc-46c0-a6c7-e45465455455"}
   ],
   "producer": {
        "name": "Access",

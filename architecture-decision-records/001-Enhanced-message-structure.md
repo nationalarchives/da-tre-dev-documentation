@@ -1,6 +1,6 @@
 # Enhanced message structure
 
-Date: 28-07-2022
+Date: 01-08-2022
 
 ## Status
 
@@ -10,7 +10,7 @@ Proposed
 
 The current message structure is very TDR-TRE specific. We would like a more generic structure for future extensibility.
 
-> Phil, anything else to add here?
+
 
 ## Decision
 
@@ -28,7 +28,7 @@ The following is now proposed for the message structures. This is based on the n
 ### TDR and TRE interaction
 
 The TDR to TRE message can be constructed as follows
-TDR creates a UUID and states who produce it why and the parameters 
+TDR creates a UUID and states who has produced it  and why with any parameters 
 
 ```JSON
 {
@@ -96,8 +96,8 @@ TRE should also send any errors that caused the retry
 ```JSON
 {
   "UUIDs" : [
-	  {"Process-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"} ,
-	  {"Process-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
+	  {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"} ,
+	  {"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
   ],
   "producer" : {
     "name" : "TRE",
@@ -123,14 +123,14 @@ TRE should also send any errors that caused the retry
 Any errors should also be sent as this could be used to route the package more effectively. 
 Note: just wondering if we should also add error type e.g. warning, critical 
 
-If Access need t retry the message would be as
+If Access need to retry the message would be as
 
 ```JSON
 {
     "UUIDs": [
   	{"TDR-UUID": "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
   	{"TRE-UUID": "0097675d-a1fc-46c0-a6c7-e45467696792"},
-  	{"TRE-UUID": "0094551e-a1fc-46c0-a6c7-e45465455455"}
+  	{"<name for caselaw>-UUID": "0094551e-a1fc-46c0-a6c7-e45465455455"}
   ],
   "producer": {
        "name": "Access",
@@ -158,5 +158,3 @@ If Access need t retry the message would be as
 
 The message could become quite big depending on the number of consumers and producers. 
 
-> What becomes easier or more difficult to do because of this change?
-> Phil, anything to add here (e.g. Schema for the message structure)?

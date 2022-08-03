@@ -184,7 +184,7 @@ updated, some may not; adjust the following steps accordingly:
         to the `test` branch
 
     3. Merge any Step Function updates in `da-transform-terraform-modules`
-        to the `dev` branch
+        to the `test` branch
 
     4. Trigger a Terraform apply by merging the feature branch changes in
         `da-transform-terraform-environments` to the `test` branch<sup>2</sup>

@@ -148,37 +148,37 @@ And the response from TDR would be as
   },
   "parameters": {
       "TRE": {
-        "reference": "TRE-TDR-2022-FT5",
-        "s3-folder-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2022-FT5/0/0/TRE-TDR-2022-FT5.tar.gz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZK63QCBCV2XBWAUG%2F20220803%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220803T131120Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDUaCWV1LXdlc3QtMiJGMEQCIBYFCBo24Fpx2DGKiEItfQJufAWHGdDw0RCtVd6cmmhWAiAWPymjQ%2FCC9olf8%2F%2F6FuUl41TX1DMevil1KGDHbO5tJSqaAwiO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDY0MjAyMTA2ODg2OSIMQKApMmAOjQdKpyxzKu4CCI1MnpkR3yZuuC%2BU1q7jRzXBa8QIOzjKkec9bO1bXxaa8HMIzjADznYN9WToLhigfx4E%2F60Oq22QXn%2FsYN5ud7oSId3W5XUEsFpkkKtQBIlnWRB9xVRR9CmA6RmR%2Fqk9QldmrodKcS3%2BO67wjrwNAJMZDHMyeMpKgRyYN9i%2BUrBes8qgQJcBdsrXdWMjfua93VMRZH0SqO%2BmBzuAb%2B5vcN7OvY0Tj1vfEZNaZNpMnEKaxxhyvhqCMSXZUH%2Fwm4iSeK63oikhwTJ6MaMfX167Jm4%2FGgkhPv0SG%2BoEQtFAv6R1fZbWrTgUokJd9CCZnTilBX9gU56P9VKn1x66GWy24evtqnx%2BpIUvce74FhcNrrEh7ldLY7fALHkQSbjth28VLqzY8tu1DJ94XvAvNh%2FNbte2Ly1VDgB3p0oeZbnpNgi%2F3WOgjtCpqNQIWzUv3cIC8ytOgDW7hOteaFLrDj7WvS6RkX1GBlxWnpNJ%2FNdZMPTnqZcGOp4BxkTrsUFqBuu86TlZvqKuSd6kQeBiovDedWSV5fyO2TMRk546C%2BDE1%2B20jWMR1iLQNSAcynm0sk9sIdzG%2F2YjuHREPo%2FZPr9jrv%2F8xeJDL7khtYMDhwCE9AbrewusE3L%2BaK6zRKFqnf34nlxhaoiFpRW1q5Xb%2FhM7Ha%2Fx%2BJJopFrcRdHSoyGcJ5Y4ONdvnbKsc4MMEUwqWHjpj3K5Das%3D&X-Amz-Signature=d13a16a8d6750c50aed1f0925cd04be84869b5c7b4f40cd9449f3c7b8e5a2a02",
-        "s3-sha256-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2022-FT5/0/0/TRE-TDR-2022-FT5.tar.gz.sha256?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZK63QCBCV2XBWAUG%2F20220803%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220803T131120Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDUaCWV1LXdlc3QtMiJGMEQCIBYFCBo24Fpx2DGKiEItfQJufAWHGdDw0RCtVd6cmmhWAiAWPymjQ%2FCC9olf8%2F%2F6FuUl41TX1DMevil1KGDHbO5tJSqaAwiO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDY0MjAyMTA2ODg2OSIMQKApMmAOjQdKpyxzKu4CCI1MnpkR3yZuuC%2BU1q7jRzXBa8QIOzjKkec9bO1bXxaa8HMIzjADznYN9WToLhigfx4E%2F60Oq22QXn%2FsYN5ud7oSId3W5XUEsFpkkKtQBIlnWRB9xVRR9CmA6RmR%2Fqk9QldmrodKcS3%2BO67wjrwNAJMZDHMyeMpKgRyYN9i%2BUrBes8qgQJcBdsrXdWMjfua93VMRZH0SqO%2BmBzuAb%2B5vcN7OvY0Tj1vfEZNaZNpMnEKaxxhyvhqCMSXZUH%2Fwm4iSeK63oikhwTJ6MaMfX167Jm4%2FGgkhPv0SG%2BoEQtFAv6R1fZbWrTgUokJd9CCZnTilBX9gU56P9VKn1x66GWy24evtqnx%2BpIUvce74FhcNrrEh7ldLY7fALHkQSbjth28VLqzY8tu1DJ94XvAvNh%2FNbte2Ly1VDgB3p0oeZbnpNgi%2F3WOgjtCpqNQIWzUv3cIC8ytOgDW7hOteaFLrDj7WvS6RkX1GBlxWnpNJ%2FNdZMPTnqZcGOp4BxkTrsUFqBuu86TlZvqKuSd6kQeBiovDedWSV5fyO2TMRk546C%2BDE1%2B20jWMR1iLQNSAcynm0sk9sIdzG%2F2YjuHREPo%2FZPr9jrv%2F8xeJDL7khtYMDhwCE9AbrewusE3L%2BaK6zRKFqnf34nlxhaoiFpRW1q5Xb%2FhM7Ha%2Fx%2BJJopFrcRdHSoyGcJ5Y4ONdvnbKsc4MMEUwqWHjpj3K5Das%3D&X-Amz-Signature=9a3eca2b470d80cc49b87a3f7f270d02d58a2cf9deb091ff54d8b53c6773ad03",
+        "reference": "TDR-2021-GW3",
+        "s3-folder-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2021-GW3/0/0/TRE-TDR-2021-GW3.tar.gz?X-Amz-Algorithm=AWS4-HMAC-SHA256...",
+        "s3-sha256-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2021-GW3/0/0/TRE-TDR-2021-GW3.tar.gz.sha256?X-Amz-Algorithm=AWS4-HMAC-SHA256...",
         "consignment-type": "judgment",
         "number-of-retries": 0,
         "tar-gz": {
           "bucket": "prod-tre-editorial-judgment-out",
-          "key": "parsed/judgment/TDR-2022-FT5/0/0/TRE-TDR-2022-FT5.tar.gz",
+          "key": "parsed/judgment/TDR-2021-GW3/0/0/TRE-TDR-2021-GW3.tar.gz",
           "items": [
             {
-              "name": "TDR-2022-FT5/TRE-TDR-2022-FT5-metadata.json",
+              "name": "TDR-2021-GW3/TRE-TDR-2021-GW3-metadata.json",
               "size": 1459
             },
             {
-              "name": "TDR-2022-FT5/TDR-2022-FT5.xml",
+              "name": "TDR-2021-GW3/TDR-2021-GW3.xml",
               "size": 118210
             },
             {
-              "name": "TDR-2022-FT5/parser.log",
+              "name": "TDR-2021-GW3/parser.log",
               "size": 1755
             },
             {
-              "name": "TDR-2022-FT5/LC-2020-75 final.doc.docx",
+              "name": "TDR-2021-GW3/LC-2020-75 final.doc.docx",
               "size": 134498
             },
             {
-              "name": "TDR-2022-FT5/image2.png",
+              "name": "TDR-2021-GW3/image2.png",
               "size": 24744
             },
             {
-              "name": "TDR-2022-FT5/image1.png",
+              "name": "TDR-2021-GW3/image1.png",
               "size": 4957
             }
           ]
@@ -186,8 +186,8 @@ And the response from TDR would be as
         "prod-tre-version": "0.1.2",
         "payload": {
           "filename": "LC-2020-75 final.doc.docx",
-          "xml": "TDR-2022-FT5.xml",
-          "metadata": "TRE-TDR-2022-FT5-metadata.json",
+          "xml": "TDR-2021-GW3.xml",
+          "metadata": "TRE-TDR-2021-GW3-metadata.json",
           "images": [
             "image2.png",
             "image1.png"
@@ -204,11 +204,11 @@ And the response from TDR would be as
         ]
       },
       "PARSER": {
-        "uri": "https://caselaw.nationalarchives.gov.uk/id/ukut/lc/2022/206",
+        "uri": "https://caselaw.nationalarchives.gov.uk/...",
         "court": "UKUT-LC",
-        "cite": "[2022] UKUT 206 (LC)",
+        "cite": "[2022] UKUT ...",
         "date": "2022-08-03",
-        "name": "MR JUSTIN ALLEN (VALUATION OFFICER) v TYNE & WEAR ARCHIVES AND MUSEUMS",
+        "name": "MR ...",
         "attachments": [],
         "error-messages": []
       },
@@ -218,11 +218,11 @@ And the response from TDR would be as
         "Consignment-Start-Datetime": "2022-08-03T13:05:45Z",
         "Consignment-Series": "",
         "Source-Organization": "HM Courts and Tribunals Service",
-        "Contact-Name": "Emily Hinds",
-        "Internal-Sender-Identifier": "TDR-2022-FT5",
+        "Contact-Name": "Emily ...",
+        "Internal-Sender-Identifier": "TDR-2021-GW3",
         "Consignment-Completed-Datetime": "2022-08-03T13:09:27Z",
         "Consignment-Export-Datetime": "2022-08-03T13:10:27Z",
-        "Contact-Email": "emily.hinds@judiciary.uk",
+        "Contact-Email": "test@judiciary.uk",
         "Payload-Oxum": "134498.1",
         "Bagging-Date": "2022-08-03"
       }
@@ -287,9 +287,9 @@ If Access need to retry the message would be as
   },
   "parameters": {
       "TRE": {
-        "reference": "TRE-TDR-2022-FT5",
-        "s3-folder-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2022-FT5/0/0/TRE-TDR-2022-FT5.tar.gz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZK63QCBCV2XBWAUG%2F20220803%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220803T131120Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDUaCWV1LXdlc3QtMiJGMEQCIBYFCBo24Fpx2DGKiEItfQJufAWHGdDw0RCtVd6cmmhWAiAWPymjQ%2FCC9olf8%2F%2F6FuUl41TX1DMevil1KGDHbO5tJSqaAwiO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDY0MjAyMTA2ODg2OSIMQKApMmAOjQdKpyxzKu4CCI1MnpkR3yZuuC%2BU1q7jRzXBa8QIOzjKkec9bO1bXxaa8HMIzjADznYN9WToLhigfx4E%2F60Oq22QXn%2FsYN5ud7oSId3W5XUEsFpkkKtQBIlnWRB9xVRR9CmA6RmR%2Fqk9QldmrodKcS3%2BO67wjrwNAJMZDHMyeMpKgRyYN9i%2BUrBes8qgQJcBdsrXdWMjfua93VMRZH0SqO%2BmBzuAb%2B5vcN7OvY0Tj1vfEZNaZNpMnEKaxxhyvhqCMSXZUH%2Fwm4iSeK63oikhwTJ6MaMfX167Jm4%2FGgkhPv0SG%2BoEQtFAv6R1fZbWrTgUokJd9CCZnTilBX9gU56P9VKn1x66GWy24evtqnx%2BpIUvce74FhcNrrEh7ldLY7fALHkQSbjth28VLqzY8tu1DJ94XvAvNh%2FNbte2Ly1VDgB3p0oeZbnpNgi%2F3WOgjtCpqNQIWzUv3cIC8ytOgDW7hOteaFLrDj7WvS6RkX1GBlxWnpNJ%2FNdZMPTnqZcGOp4BxkTrsUFqBuu86TlZvqKuSd6kQeBiovDedWSV5fyO2TMRk546C%2BDE1%2B20jWMR1iLQNSAcynm0sk9sIdzG%2F2YjuHREPo%2FZPr9jrv%2F8xeJDL7khtYMDhwCE9AbrewusE3L%2BaK6zRKFqnf34nlxhaoiFpRW1q5Xb%2FhM7Ha%2Fx%2BJJopFrcRdHSoyGcJ5Y4ONdvnbKsc4MMEUwqWHjpj3K5Das%3D&X-Amz-Signature=d13a16a8d6750c50aed1f0925cd04be84869b5c7b4f40cd9449f3c7b8e5a2a02",
-        "s3-sha256-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2022-FT5/0/0/TRE-TDR-2022-FT5.tar.gz.sha256?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZK63QCBCV2XBWAUG%2F20220803%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220803T131120Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDUaCWV1LXdlc3QtMiJGMEQCIBYFCBo24Fpx2DGKiEItfQJufAWHGdDw0RCtVd6cmmhWAiAWPymjQ%2FCC9olf8%2F%2F6FuUl41TX1DMevil1KGDHbO5tJSqaAwiO%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDY0MjAyMTA2ODg2OSIMQKApMmAOjQdKpyxzKu4CCI1MnpkR3yZuuC%2BU1q7jRzXBa8QIOzjKkec9bO1bXxaa8HMIzjADznYN9WToLhigfx4E%2F60Oq22QXn%2FsYN5ud7oSId3W5XUEsFpkkKtQBIlnWRB9xVRR9CmA6RmR%2Fqk9QldmrodKcS3%2BO67wjrwNAJMZDHMyeMpKgRyYN9i%2BUrBes8qgQJcBdsrXdWMjfua93VMRZH0SqO%2BmBzuAb%2B5vcN7OvY0Tj1vfEZNaZNpMnEKaxxhyvhqCMSXZUH%2Fwm4iSeK63oikhwTJ6MaMfX167Jm4%2FGgkhPv0SG%2BoEQtFAv6R1fZbWrTgUokJd9CCZnTilBX9gU56P9VKn1x66GWy24evtqnx%2BpIUvce74FhcNrrEh7ldLY7fALHkQSbjth28VLqzY8tu1DJ94XvAvNh%2FNbte2Ly1VDgB3p0oeZbnpNgi%2F3WOgjtCpqNQIWzUv3cIC8ytOgDW7hOteaFLrDj7WvS6RkX1GBlxWnpNJ%2FNdZMPTnqZcGOp4BxkTrsUFqBuu86TlZvqKuSd6kQeBiovDedWSV5fyO2TMRk546C%2BDE1%2B20jWMR1iLQNSAcynm0sk9sIdzG%2F2YjuHREPo%2FZPr9jrv%2F8xeJDL7khtYMDhwCE9AbrewusE3L%2BaK6zRKFqnf34nlxhaoiFpRW1q5Xb%2FhM7Ha%2Fx%2BJJopFrcRdHSoyGcJ5Y4ONdvnbKsc4MMEUwqWHjpj3K5Das%3D&X-Amz-Signature=9a3eca2b470d80cc49b87a3f7f270d02d58a2cf9deb091ff54d8b53c6773ad03",
+        "reference": "TRE-TDR-2021-GW3",
+        "s3-folder-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2021-GW3/0/0/TRE-TDR-2021-GW3.tar.gz?X-Amz-Algorithm=AWS4-HMAC-SHA256...",
+        "s3-sha256-url": "https://prod-tre-editorial-judgment-out.s3.amazonaws.com/parsed/judgment/TDR-2021-GW3/0/0/TRE-TDR-2021-GW3.tar.gz.sha256?X-Amz-Algorithm=AWS4-HMAC-SHA256...",
         "number-of-retries": 0,
         "prod-tre-version": "0.1.2",
         "lambda-functions-version": [

@@ -51,12 +51,12 @@ The **management** account is used to host:
 
 # Code Repositories
 
-| Repository                                                                                                           | Purpose                                                                   | Key Branches                    |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------- |
-| [da-transform-judgments-pipeline](https://github.com/nationalarchives/da-transform-judgments-pipeline/tree/develop)  | Code for Lambda Function Docker images                                    | `develop`                       |
-| [da-transform-terraform-modules](https://github.com/nationalarchives/da-transform-terraform-modules)                 | IaC application entities (e.g. Step Function, Lambda Functions, SQS, ...) | `dev`, `int`, `staging`, `prod` |
-| [da-transform-terraform-environments](https://github.com/nationalarchives/da-transform-terraform-environments)       | IaC execution entrypoint; IaC system entities                             | `dev`, `int`, `staging`, `prod` |
-| [tna-judgments-parser](https://github.com/nationalarchives/tna-judgments-parser) <sup>*</sup>                        | Parser code for Step Function Lambda Docker image                         | `main`                          |
+| Repository                                                                                                       | Purpose                                                                   | Key Branches                    |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------- |
+| [da-transform-judgments-pipeline](https://github.com/nationalarchives/da-transform-judgments-pipeline/tree/main) | Code for Lambda Function Docker images                                    | `main`                          |
+| [da-transform-terraform-modules](https://github.com/nationalarchives/da-transform-terraform-modules)             | IaC application entities (e.g. Step Function, Lambda Functions, SQS, ...) | `dev`, `int`, `staging`, `prod` |
+| [da-transform-terraform-environments](https://github.com/nationalarchives/da-transform-terraform-environments)   | IaC execution entrypoint; IaC system entities                             | `dev`, `int`, `staging`, `prod` |
+| [tna-judgments-parser](https://github.com/nationalarchives/tna-judgments-parser) <sup>*</sup>                    | Parser code for Step Function Lambda Docker image                         | `main`                          |
 
 > <sup>*</sup>A Docker image is built by this project when the external
     `tna-judgments-parser` project has a new tag pushed (see `parser-pipeline`
@@ -130,7 +130,7 @@ updated, some may not; adjust the following steps accordingly:
 
         | Repository                            | Source Branch | Example                                                                     |
         | ------------------------------------- | ------------- | --------------------------------------------------------------------------- |
-        | `da-transform-judgments-pipeline`     | `develop`     | Step Function Lambda change                                                 |
+        | `da-transform-judgments-pipeline`     | `main`        | Step Function Lambda change                                                 |
         | `da-transform-terraform-modules`      | `dev`         | Step Function workflow change<br>Application specific cloud resource change |
         | `da-transform-terraform-environments` | `dev`         | Terraform IaC trigger<sup>*</sup><br>System specific cloud resource change  |
 
@@ -152,11 +152,11 @@ updated, some may not; adjust the following steps accordingly:
 
         1. Ensure the correct version is set for the Lambda Function
         
-            > For `tre-editorial-integration` this is: [`tre-editorial-integration/version.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/develop/lambda_functions/tre-editorial-integration/version.sh)
+            > For `tre-editorial-integration` this is: [`tre-editorial-integration/version.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/main/lambda_functions/tre-editorial-integration/version.sh)
 
         2. Run the Lambda Function's build script
 
-            > For some images this is: [`lambda_functions/build.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/develop/lambda_functions/build.sh)
+            > For some images this is: [`lambda_functions/build.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/main/lambda_functions/build.sh)
 
     6. While the Lambda Function version(s) can be updated manually in the
         console for development testing  purposes, ensure the steps in the
@@ -168,7 +168,7 @@ updated, some may not; adjust the following steps accordingly:
     1. Update the Lambda Function version(s) in `dev-tfvars` in Parameter Store<sup>1</sup>
 
     2. Merge any Lambda Function updates in `da-transform-judgments-pipeline`
-        to the `develop` branch
+        to the `main` branch
 
     3. Merge any Step Function updates in `da-transform-terraform-modules`
         to the `dev` branch

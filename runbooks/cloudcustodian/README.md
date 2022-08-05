@@ -46,6 +46,7 @@ python3 -m venv custodian
 Tna-custodian policies can be found in this * [TNA Cloud Custodian GitHub repository](https://github.com/nationalarchives/tna-custodian/tree/master/custodian/policies)
 
 * Create Roles (`cloud-custodian-admin-access`) in TRE accounts for lambda and add it to the polices under `mode`.
+
 ![Screenshot](mode.png)
 
 ### Setting-up mailer
@@ -53,9 +54,12 @@ Tna-custodian policies can be found in this * [TNA Cloud Custodian GitHub reposi
 1. Create (in TRE Manaement account) a SQS Queue and grant cross-account access.
 2. Create (in TRE Manaement account) a Role for mailer lambda. 
 2. Create mailer.yaml and add the Queue URL and Role ARN. 
+
 ![Screenshot](mailer.png)
 3. Add Slack-webhook URL and the SQS Queue URL under `action` in custodian policies. 
+
 ![Screenshot](slack_notif.png)
+
 4. Run `c7n-mailer --config mailer.yml --update-lambda`
 This will create a Lambda (`custodian-mailer`) whcih gets invoked by a EventBridge Rule (`custodian-mailer`).
 By default the Lambda runs every 5 minutes but it can be chaged in AWS EventBridge. 

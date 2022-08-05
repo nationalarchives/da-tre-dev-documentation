@@ -18,11 +18,15 @@
 | S3          | Unmark-public-policy          | Previously marked S3 bucket no longer public                | Remove mark                 | 
 | S3          | Delete-marked-public-policy   | Marked S3 bucket date condition met                         | Terminate instance          | 
 | S3          | Check-for-public-access-block | S3 bucket without public access block                       | Set public access block     |
-| ECR         | Ecr-scan-on-push              | Image Scanning on push not enabled                          | Set Scanning on push
+| ECR         | Ecr-scan-on-push              | Image Scanning on push not enabled                          | Set Scanning on push        |
+| SecurityHub | Inspector-ecr-findings        | Ecr image vulnerability findings                            | None                        |
 
 ## USAGE
 
+* [TRE Cloud Custodian GitHub repository](https://github.com/nationalarchives/da-transform-terraform-environments/tree/cloudcustodian/cloudcustodian)
+
 ### Prerequisites
+
 * AWS CLI
 
 ### Install Cloud Custodian
@@ -43,7 +47,7 @@ python3 -m venv custodian
 ``` 
 
 ### Adding policies 
-Tna-custodian policies can be found in this * [TNA Cloud Custodian GitHub repository](https://github.com/nationalarchives/tna-custodian/tree/master/custodian/policies)
+Tna-custodian policies can be found here in [TNA Cloud Custodian GitHub repository](https://github.com/nationalarchives/tna-custodian/tree/master/custodian/policies)
 
 * Create Roles (`cloud-custodian-admin-access`) in TRE accounts for lambda and add it to the polices under `mode`.
 

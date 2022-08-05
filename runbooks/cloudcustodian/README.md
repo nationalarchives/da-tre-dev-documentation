@@ -1,4 +1,4 @@
-# tna-custodian
+# TRE-Custodian
 
 ## ALERTS AND REMEDIATIONS
 * This implementation of Cloud Custodian includes the following alerts and automated remediations:

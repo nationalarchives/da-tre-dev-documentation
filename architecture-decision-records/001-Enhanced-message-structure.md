@@ -31,7 +31,7 @@ TDR creates a UUID and states who has produced it  and why with any parameters
 ```JSON
 {
   "version" : "1.0.0",
-  "timestamp" : "1659631669",
+  "timestamp" : "1659696719450929000",
   "UUIDs" : [
     { "TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"}
   ],
@@ -43,21 +43,21 @@ TDR creates a UUID and states who has produced it  and why with any parameters
  },
  "parameters": {
   	"TDR" : {
-    		"resource": {
-    			 "resource-type" : "Object",
-    			 "access-type":"url",
-    			 "value":"https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz........."
-    		  },
-    		 "resource-validation": {
-    			  "resource-type" : "Object",
-    			  "access-type" : "url",
-    			  "validation-method" : "SHA256",
-    			  "value" : "https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz.sha256........."
-    		  },
-  		    "number-of-retries" : "0",
-  		    "reference" : "TDR-2021-GW3"
-  		}
-  	}
+      "resource": {
+          "resource-type" : "Object",
+          "access-type":"url",
+          "value":"https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz........."
+        },
+        "resource-validation": {
+          "resource-type" : "Object",
+          "access-type" : "url",
+          "validation-method" : "SHA256",
+          "value" : "https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz.sha256........."
+        },
+        "number-of-retries" : "0",
+        "reference" : "TDR-2021-GW3"
+    }
+  }
 }
 ```
 
@@ -67,7 +67,7 @@ TRE should also send any errors that caused the retry
 ```JSON
 {
   "version" : "1.0.0",
-  "timestamp" : "1659631669",
+  "timestamp" : "1659696719450929000",
   "UUIDs" : [
 	  {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
 	  {"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"}
@@ -96,7 +96,7 @@ And the response from TDR would be as
 ```JSON
 {
   "version" : "1.0.0",
-  "timestamp" : "1659631669",
+  "timestamp" : "1659696719450929000",
   "UUIDs" : [
     {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
 	{"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"},
@@ -110,21 +110,21 @@ And the response from TDR would be as
  },
  "parameters": {
   	"TDR" : {
-    		"resource": {
-    			 "resource-type" : "Object",
-    			 "access-type":"url",
-    			 "value":"https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz........."
-    		  },
-    		 "resource-validation": {
-    			  "resource-type" : "Object",
-    			  "access-type" : "url",
-    			  "validation-method" : "SHA256",
-    			  "value" : "https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz.sha256........."
-    		  },
-  		    "number-of-retries" : "1",
-  		    "reference" : "TDR-2021-GW3"
-  		}
-  	}
+      "resource": {
+          "resource-type" : "Object",
+          "access-type":"url",
+          "value":"https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz........."
+        },
+        "resource-validation": {
+          "resource-type" : "Object",
+          "access-type" : "url",
+          "validation-method" : "SHA256",
+          "value" : "https://presignedurldemo.s3.eu-west2.amazonaws.com/TDR-2021-GW3.tar.gz.sha256........."
+        },
+        "number-of-retries" : "1",
+        "reference" : "TDR-2021-GW3"
+    }
+  }
 }
 ```
 
@@ -133,7 +133,7 @@ And the response from TDR would be as
 ```JSON
 {
   "version" : "1.0.0",
-  "timestamp" : "1659631669",
+  "timestamp" : "1659696719450929000",
   "UUIDs" : [
     {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
 	{"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"},
@@ -238,7 +238,7 @@ If Access need to retry the message would be as
 ```JSON
 {
 	"version" : "1.0.0",
- 	"timestamp" : "1659631669",
+ 	"timestamp" : "1659696719450929000",
 	"UUIDs" : [
 		{"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
 		{"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"},
@@ -272,7 +272,7 @@ If Access need to retry the message would be as
 ```JSON
 {
   "version" : "1.0.0",
-  "timestamp" : "1659631669",
+  "timestamp" : "1659696719450929000",
   "UUIDs" : [
     {"TDR-UUID" : "0001d50d-a1fc-46c0-a6c7-ebc8309cfaf2"},
     {"TRE-UUID" : "0009885d-a1fc-46c0-a6c7-e45454545455"},

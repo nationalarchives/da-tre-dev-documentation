@@ -44,53 +44,134 @@ Enter the details and choose a colour to associate with the role in the history 
 
 You can choose "Switch back" to return to the users account, or select any other role from the history if you need to switch back and forth between them.
 
-
 ### AWS CLI and SDKs
 
-TO DO
+The simplest option here, is to add your user credentials - you can create these in the "Users" account once you have enabled (and logged back in using) your MFA token.  First you should create access keys - select "Security Credentials" from the menu by clicking on your username in the AWS console:
 
+![image-4](./images/image-4.png)
 
+First, on the "AWS IAM credentials" tab you should take a note of your MFA device ARN - this is listed under "Multi-factor authentication (MFA)" and will show you the unique identifier for your user:
 
-TO DO
+![image-5](./images/image-5.png)
 
-```bash
-AWS CLI Developer Configuration:
-~/.aws/config :
+Next, select the "Create access key" button under "Access keys for CLI, SDK, & API access":
 
-[profile tna-user]
+![image-6](./images/image-6.png)
+
+```
+The Secret Access Key  shown in the popup will never be available again, do not close the popup window until you have recorded it or you will be unable to use the credentials you have created
+```
+
+From a command-line, you can now add these details to your CLI and SDK configuration as a named profile by running the following command - we have named it `tna-temporary` in the example here:
+
+```
+aws configure --profile tna-temporary
+AWS Access Key ID [None]: <PASTE ACCESS KEY ID FROM CONSOLE>
+AWS Secret Access Key [None]: <PASTE SECRET ACCESS KEY FROM CONSOLE>
+Default region name [None]: eu-west-2
+Default output format [None]: json
+```
+
+If you already have a profile set, this same command can be used to update the credentials, region or output format of the profile.
+
+Next, you can configure the assume-role configuration - this needs to be done by editing the file `~/.aws/config`  - the `tna-temporary`  profile from above is shown here, along with an assume-role profile for `tna-temporary-nonprod-admin`:
+
+```
+[profile tna-temporary]
 region = eu-west-2
 output = json
-
-[profile tna-dev-mgmt]
+ 
+[profile tna-temporary-nonprod-admin]
 region = eu-west-2
 output = json
-source_profile = tna-user
-role_arn = arn:aws:iam::454286877087:role/zaizi/Zaizi_Dev_Role
-mfa_serial = arn:aws:iam::528553943715:mfa/YOUR_IAM_USERNAME
+source_profile=tna-temporary
+role_arn = arn:aws:iam::<xxxxxxxx>:role/admin_<xxxxxxxxxxx>
+mfa_serial = arn:aws:iam::<xxxxxx>:mfa/<xxxxx>
+```
 
-[profile tna-dev-nonprod]
-region = eu-west-2
-output = json
-source_profile = tna-user
-role_arn = arn:aws:iam::882876621099:role/zaizi/Zaizi_Dev_Role
-mfa_serial = arn:aws:iam::528553943715:mfa/YOUR_IAM_USERNAME
+This pattern can be repeated in that file for all Normandy accounts by altering the profile name and role_arn as appropriate.
 
-[profile tna-dev-prod]
-region = eu-west-2
-output = json
-source_profile = tna-user
-role_arn = arn:aws:iam::642021068869:role/zaizi/Zaizi_Dev_Role
-mfa_serial = arn:aws:iam::528553943715:mfa/YOUR_IAM_USERNAME
+To use the new profile, you can now set an environment variable to point at it:
 
-Replace the YOUR_IAM_USERNAME values with the username you login to the AWS console, and add your credentials as follows
-~/.aws/credentials:
-[tna-user]
-aws_access_key_id = <YOUR_KEY_FROM_AWS>
-aws_secret_access_key = <YOUR_KEY_FROM_AWS>
+```
+export AWS_PROFILE=tna-temporary-nonprod-admin
+aws sts get-caller-identity
+```
 
-to use a profile, e.g.:
-aws --profile=tna-dev-prod s3 ls
-alternatively to set environment variable:
-export AWS_PROFILE=tna-dev-prod
-then run your commands as normal
+Alternatively, you can specify the profile on your command-line when calling AWS:
+
+```
+aws --profile=tna-temporary-nonprod-admin sts get-caller-identity
+```
+
+### Using environment variables
+
+An alternative to using named profiles is to configure environment variables, which can be achieved by using the `aws sts get-session-token` and `aws sts assume-role` commands.  This process assumes you have not configured your AWS CLI following the instructions above - you will need to know your access credentials and MFA Token Code as described previously.
+
+#### To authenticate directly into an account with an MFA token:
+
+```
+export AWS_ACCESS_KEY_ID=<access key saved from AWS console>
+export AWS_SECRET_ACCESS_KEY=<secret access key saved from AWS console>
+export AWS_REGION=eu-west-2
+aws sts get-session-token --duration-seconds 3600 --serial-number <MFA token serial number saved from AWS console> --token-code <value from your MFA token>
+```
+
+This will give you session credentials you can use to perform tasks that require you to have authenticated with the provided token.  You will need to set your environment variables with the values shown as in this example (credentials have been simplified):
+
+```
+➜  ~ export AWS_ACCESS_KEY_ID=<access_key_from_AWS_console>
+➜  ~ export AWS_SECRET_ACCESS_KEY=<secret_key_from_AWS_console>
+➜  ~ export AWS_REGION=eu-west-2
+➜  ~ aws sts get-session-token --duration-seconds 3600 --serial-number <MFA_token_code_from_AWS_console> --token-code <value_from_authenticator_app>
+{
+    "Credentials": {
+        "AccessKeyId": "NEWMFAKEYFROMCOMMAND",
+        "SecretAccessKey": "NEWMFASECRETFROMCOMMAND",
+        "SessionToken": "NEWMFASESSIONFROMCOMMAND=",
+        "Expiration": "2022-06-22T10:47:59+00:00"
+    }
+}
+➜  ~ export AWS_ACCESS_KEY_ID="NEWMFAKEYFROMCOMMAND"
+➜  ~ export AWS_SECRET_ACCESS_KEY="NEWMFASECRETFROMCOMMAND"
+➜  ~ export AWS_SESSION_TOKEN="NEWMFASESSIONFROMCOMMAND="
+➜  ~ aws sts get-caller-identity
+{
+    "UserId": "YOURUSERIDFROMAWS",
+    "Account": "012345678901",
+    "Arn": "arn:aws:iam::012345678901:user/youruser"
+}
+➜  ~
+```
+
+#### To assume a role directly with the AWS CLI
+
+```
+➜  ~ export AWS_ACCESS_KEY_ID=<access_key_from_AWS_console>
+➜  ~ export AWS_SECRET_ACCESS_KEY=<secret_key_from_AWS_console>
+ 
+➜  ~ export AWS_REGION=eu-west-2
+➜  ~ aws sts assume-role --role-arn <target_role_arn> --role-session-name <example-session-name> --duration-seconds 3600 --serial-number <MFA_token_code_from_AWS_console> --token-code <value_from_authenticator_app>
+{
+    "Credentials": {
+        "AccessKeyId": "NEWROLEKEY",
+        "SecretAccessKey": "NEWROLESECRET",
+        "SessionToken": "NEWROLESESSION=",
+        "Expiration": "2022-06-22T10:54:42+00:00"
+    },
+    "AssumedRoleUser": {
+        "AssumedRoleId": "YOURUSERIDFROMAWS:example-session-name",
+        "Arn": "arn:aws:sts::<acount id>:assumed-role/role_name/example-session-name"
+    }
+}
+➜  ~ export AWS_ACCESS_KEY_ID="NEWROLEKEY"
+➜  ~ export AWS_SECRET_ACCESS_KEY="NEWROLESECRET"
+➜  ~ export AWS_SESSION_TOKEN="NEWROLESESSION="
+➜  ~ aws sts get-caller-identity
+{
+    "UserId": "YOURUSERIDFROMAWS:example-session-name",
+    "Account": "<acount id>",
+    "Arn": "arn:aws:sts::<acount id>:assumed-role/role_name/example-session-name"
+}
+➜  ~
 ```

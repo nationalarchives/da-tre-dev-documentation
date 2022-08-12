@@ -30,11 +30,11 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 You should always login to the Users account with the credentials provided and using your MFA token.  Once authenticated, you should select your name from the top-right of the console page.
 
-```
-**Note**
 
-Some roles will be cached inside your browser - generally only the most recently used 5 will be shown.  You should ensure you keep a record of any assume-role details you will need.
-```
+> **Note**
+>
+> Some roles will be cached inside your browser - generally only the most recently used 5 will be shown.  You should ensure you keep a record of any assume-role details you will need.
+>
 
 You may select a role you have previously used directly from the list, or choose "Switch role" to enter details of one not listed
 
@@ -60,11 +60,11 @@ Next, select the "Create access key" button under "Access keys for CLI, SDK, & A
 
 ![image-6](./images/image-6.png)
 
-```
-**Warning**
 
-The Secret Access Key  shown in the popup will never be available again, do not close the popup window until you have recorded it or you will be unable to use the credentials you have created
-```
+> **Warning**
+> 
+> The Secret Access Key  shown in the popup will never be available again, do not close the popup window until you have recorded it or you will be unable to use the credentials you have created
+> 
 
 From a command-line, you can now add these details to your CLI and SDK configuration as a named profile by running the following command - we have named it `tna-temporary` in the example here:
 

@@ -22,6 +22,14 @@ Automation is guaranteed by using a [pipeline for each environment](../dev-deplo
 
 The release cycle for infrastructure changes consists of the steps described in the section [Application Update Process](./../dev-deploy-guide/README.md#application-update-process)
 
+
+> **Note**
+> 
+> Some changes require to destroy the existing cloud resources and create them with the new settings/configurations, other changes are just modification to the current infrastructure and do not require to destroy cloud resources.
+>
+> In bth cases, terraform and the pipelines are responsible to apply the changes to the infrastructure, and the flow implemented in the pipeline includes a manual approval to decide whether approve or reject the promote the changes to production.
+
+
 ## Releasing new versions of the Parser
 
 The text parser is a tool being actively developed by a third party that extracts data properties from the text of court judgment documents. It utilises Microsoft’s Office Open XML SDK (Software Development Kit) and is written with the .NET technology stack. For additional information see this [page](../../parser-integration/README.md).

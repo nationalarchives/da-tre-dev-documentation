@@ -5,3 +5,4 @@
 | [dev-deploy-guide](dev-deploy-guide/README.md)  | Development deployment guide            |
 | [tdr-retry](tdr-retry/README.md)                | Manually triggering a TDR retry request |
 | [release-cycle](./release-cycle/README.md)      | Release cycle guide                     |
+| [cloud-custodian](./cloudcustodian/README.md)   | Cloud custodian policies and implementation |

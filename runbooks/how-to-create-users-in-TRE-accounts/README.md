@@ -1,8 +1,10 @@
 # How to create users for TRE AWS Accounts
 
-### Creating users in AWS Console
+## Creating users in AWS Console
 
-**Note: Users should only ever be created by running the _terraform-common_ pipeline**
+> **Warning**
+>
+> Users should only ever be created by running the _terraform-common_ pipeline.
 
 - Add new user details in **codepipeline.tfvars** in  **TRE Management** account. (User should be added to the correct group(s). Group permission details can be found in [**da-transform-terraform-environments**](https://github.com/nationalarchives/da-transform-terraform-environments/tree/common/common/templates) )
 
@@ -10,13 +12,14 @@
 
 - Run **terraform-common** pipeline in **TRE Management** account. Check the plan to make sure no unexpected changes are being made.
 
-### Creating login profiles using AWS CLI 
+## Creating login profiles using AWS CLI 
 
-**Note: Only users with** `iam:CreateLoginProfile` **permission can create a login profile.**
+> **Warning**
+> 
+> Only users with `iam:CreateLoginProfile` permission can create a login profile.
 
 -  Run  
 ```bash
-
 aws iam create-login-profile \
 --user-name <value> \
 --password <value> \

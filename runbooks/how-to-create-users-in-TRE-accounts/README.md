@@ -22,5 +22,7 @@ aws iam create-login-profile \
 --password <value> \
 --password-reset-required
 ```
-- This will create a loging profile in **TRE User** account for the user with a password which they have to reset whne they login. 
-- Users then can assume role(s) that is associated with their respective group(s) in other TRE accounts. (Instruction on how to assume roles can be found in [**here**](https://github.com/nationalarchives/da-transform-dev-documentation/tree/master/runbooks/how-to-assume-roles-using-AWS-CLI))
+([Click here](https://docs.aws.amazon.com/cli/latest/reference/iam/create-login-profile.html) for more details)
+
+- This will create a loging profile in **TRE User** account for the user with a password which they have to reset on first sign-in. 
+- Users then can assume role(s) that is associated with their respective group(s) in other TRE accounts. (Instructions on how to assume roles can be found in [**here**](https://github.com/nationalarchives/da-transform-dev-documentation/tree/master/runbooks/how-to-assume-roles-using-AWS-CLI))

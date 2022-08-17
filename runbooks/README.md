@@ -9,3 +9,4 @@
 | [Configure Signed Commits](./signed-commits/README.md) |                                  |
 | [release-cycle](./release-cycle/README.md)      | Release cycle guide                     |
 | [cloud-custodian](./cloudcustodian/README.md)   | Cloud custodian policies and implementation |
+| [How to create users in TRE accounts](./how-to-create-users-in-TRE-accounts/README.md) |  |

@@ -1,18 +1,17 @@
 # New TDR-TRE integration
 
 * [New TDR-TRE integration](#new-tdr-tre-integration)
-   * [Status](#status)
-   * [Context](#context)
-      * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
-         * [Message UUIDs](#message-uuids)
-      * [SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
-      * [TDR to TRE new-bagit Event](#tdr-to-tre-new-bagit-event)
-      * [TRE validate-bagit Process](#tre-validate-bagit-process)
-         * [TRE bagit-validated Event](#tre-bagit-validated-event)
-         * [TRE bagit-validation-error Event](#tre-bagit-validation-error-event)
-   * [Decision](#decision)
-   * [Consequences](#consequences)
-
+    * [Status](#status)
+    * [Context](#context)
+        * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
+            * [Message UUIDs](#message-uuids)
+        * [SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
+        * [TDR to TRE new-bagit Event](#tdr-to-tre-new-bagit-event)
+        * [TRE validate-bagit Process](#tre-validate-bagit-process)
+            * [TRE bagit-validated Event](#tre-bagit-validated-event)
+            * [TRE bagit-validation-error Event](#tre-bagit-validation-error-event)
+    * [Decision](#decision)
+    * [Consequences](#consequences)
 
 ## Status
 
@@ -55,6 +54,10 @@ The following top-level JSON message format is proposed:
   }
 }
 ```
+
+Prior schema used to perform top-level message validation (not `parameters`):
+
+* [da-transform-judgments-pipeline/lib/tre_lib/tre_lib/schema.json](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/c5b05fa57b24f5b9f6aaed828f9ea0365e79a76d/lib/tre_lib/tre_lib/schema.json)
 
 JSON message key descriptions:
 
@@ -164,6 +167,10 @@ In the `parameters` section:
 | `parameters.new-bagit.resource-validation.value` | BagIt archive checksum file pre-signed URL |
 | `parameters.new-bagit.reference`                 | Consignment reference                      |
 
+Message and schema examples:
+
+* [da-transform-schemas/json-examples/tdr-to-tre-example.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-examples/tdr-to-tre-example.json)
+* [da-transform-schemas/json-schemas/tdr-to-tre-schema.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-schemas/tdr-to-tre-schema.json)
 
 ### TRE validate-bagit Process
 
@@ -172,6 +179,16 @@ The `validate-bagit` process will process `new-bagit` events and either:
 * Succeed and output a `bagit-validated` event
 * Fail to validate the BagIt and output a `bagit-validation-failed` event
 * Fail with a Step Function error; in this case no TRE event will be outputted 
+
+On receipt of an event the process will:
+
+* Create a working directory in S3 that has the input consignment reference as
+  its name
+* Create a directory in the above working directory that has the message's
+  UUID as its name; enter a fail state if a child directory already exists with
+  the UUID name
+    > Other approaches such as sending failures, or acting in an idempotent way could be considered here
+* The working folder will be used to store, unpack and verify the BagIt file
 
 #### TRE bagit-validated Event
 
@@ -197,6 +214,11 @@ In the `parameters` section:
 | `parameters.bagit-validated.s3-object-root`  | The TRE S3 folder where the input BagIt file is extracted |
 | `parameters.bagit-validated.validated-files` | A dictionary with lists of validated files                |
 
+Message and schema examples:
+
+* [da-transform-schemas/json-examples/validate-bagit-bagit-validated.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-examples/validate-bagit-bagit-validated.json)
+* [da-transform-schemas/json-schemas/validate-bagit-bagit-validated-schema.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-schemas/validate-bagit-bagit-validated-schema.json)
+
 #### TRE bagit-validation-error Event
 
 If an input BagIt fails validation, a `bagit-validation-error` event will be
@@ -218,6 +240,10 @@ In the `parameters` section:
 | `parameters.bagit-validation-error.reference` | From input message `parameters.new-bagit.reference` |
 | `parameters.bagit-validation-error.errors`    | A list of errors from the `validate-bagit` process  |
 
+Message and schema examples:
+
+* [da-transform-schemas/json-examples/validate-bagit-bagit-validation-error.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-examples/validate-bagit-bagit-validation-error.json)
+* [da-transform-schemas/json-schemas/validate-bagit-bagit-validation-error-schema.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-schemas/validate-bagit-bagit-validation-error-schema.json)
 
 ## Decision
 

@@ -24,8 +24,8 @@ Current TDR-TRE integration is documented [here](../tdr-integration/README.md).
 The following revisions to TRE have been proposed to standardise communication
 between multiple event producers and consumers:
 
-* TRE Event payload structure changes
-* Use of SQS-backed SNS topic communication
+* [TRE Event payload structure changes](#tre-event-payload-structure-changes)
+* [Use of SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
 
 ### TRE Event payload structure changes
 

@@ -65,7 +65,7 @@ JSON message key descriptions:
 |------------------------|---------------------------------------------------------------------------------------|
 | `version`              | Version of the message being sent                                                     |
 | `timestamp`            | Creation time in nanoseconds UTC                                                      |
-| `UUIDs`                | UUIDs for this message and all prior messages <sup>[1](#message-uuids)</sup>          |
+| `UUIDs`                | UUIDs for this message and all prior messages; see [Message UUIDs](#message-uuids)    |
 | `producer`             | Dictionary specifying the event-name being sent and details about the producer        |
 | `producer.name`        | The message producer (e.g. TRE, TDR, etc)                                             |
 | `producer.process`     | The name of the process that creates the message (e.g. `validate-bagit`)              |

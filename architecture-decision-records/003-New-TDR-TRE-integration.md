@@ -19,9 +19,17 @@ Proposed
 
 ## Context
 
-Current TDR-TRE integration is documented [here](../tdr-integration/README.md).
+The initial deployment used a interface specific message structure between TDR
+and TRE.
 
-The following revisions to TRE have been proposed to standardise communication
+This ADR documents the generic messaging approach that is to be used
+for V2 message flows.
+
+The V1 TDR-TRE integration is documented [here](../tdr-integration/README.md).
+
+## Decision
+
+The following revisions to TRE will be used to standardise communication
 between multiple event producers and consumers:
 
 * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
@@ -245,10 +253,10 @@ Message and schema examples:
 * [da-transform-schemas/json-examples/validate-bagit-bagit-validation-error.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-examples/validate-bagit-bagit-validation-error.json)
 * [da-transform-schemas/json-schemas/validate-bagit-bagit-validation-error-schema.json](https://github.com/nationalarchives/da-transform-schemas/blob/main/json-schemas/validate-bagit-bagit-validation-error-schema.json)
 
-## Decision
-
-What is the change that we're proposing and/or doing?
-
 ## Consequences
 
-What becomes easier or more difficult to do because of this change
+A more flexible and open solution that is easier to scale across teams.
+
+The current pilot V2 messaging deployment that is in development will need to
+be refactored, but as this is not currently live in production the change is
+low risk.

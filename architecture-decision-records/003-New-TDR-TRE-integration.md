@@ -1,17 +1,17 @@
 # New TDR-TRE integration
 
 * [New TDR-TRE integration](#new-tdr-tre-integration)
-    * [Status](#status)
-    * [Context](#context)
-        * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
-            * [Message UUIDs](#message-uuids)
-        * [SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
-        * [TDR to TRE new-bagit Event](#tdr-to-tre-new-bagit-event)
-        * [TRE validate-bagit Process](#tre-validate-bagit-process)
-            * [TRE bagit-validated Event](#tre-bagit-validated-event)
-            * [TRE bagit-validation-error Event](#tre-bagit-validation-error-event)
-    * [Decision](#decision)
-    * [Consequences](#consequences)
+  * [Status](#status)
+  * [Context](#context)
+  * [Decision](#decision)
+    * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
+      * [Message UUIDs](#message-uuids)
+    * [SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
+    * [TDR to TRE new-bagit Event](#tdr-to-tre-new-bagit-event)
+    * [TRE validate-bagit Process](#tre-validate-bagit-process)
+      * [TRE bagit-validated Event](#tre-bagit-validated-event)
+      * [TRE bagit-validation-error Event](#tre-bagit-validation-error-event)
+  * [Consequences](#consequences)
 
 ## Status
 

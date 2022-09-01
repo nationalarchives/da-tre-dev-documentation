@@ -19,11 +19,11 @@ Proposed
 
 ## Context
 
-The initial deployment used a interface specific message structure between TDR
-and TRE.
+The initial deployment used an interface specific message structure between
+TDR and TRE.
 
-This ADR documents the generic messaging approach that is to be used
-for V2 message flows.
+This ADR documents the generic messaging approach that is to be used for V2
+message flows.
 
 The V1 TDR-TRE integration is documented [here](../tdr-integration/README.md).
 

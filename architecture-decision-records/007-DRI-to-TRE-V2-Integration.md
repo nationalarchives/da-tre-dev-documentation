@@ -19,7 +19,7 @@ The payload must contain the event-name "dri-preingest-sip-available" which is i
 |-----------------------|-----------------------------------------------------------------------------------------------------|
 | `producer.event-name` | The name of the event sending this payload, for now this will always be dri-preingest-sip-available |
 
-This event name is also the header contained under the parameters header
+This event name is also the header contained under the parameters header, in the context of TRE-DRI this is always called "dir-preingest-sip-available"
 
 Most message attributes are inherited from the parent schema ([Tre-Event Schema](https://github.com/nationalarchives/da-transform-schemas/blob/main/tre_schemas/tre-event.json)
 / [Tre-Event Example]()) However when TRE interacts with DRi it should contain the payload should contain the following attributes under their respective headers

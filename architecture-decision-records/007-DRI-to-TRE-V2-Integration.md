@@ -1,4 +1,4 @@
-# DRI to TRE V2 Integration
+# TRE to DRI V2 Integration
 
 Date: 05-09-2022
 

@@ -19,11 +19,11 @@ Proposed
 
 ## Context
 
-The initial deployment used a interface specific message structure between TDR
-and TRE.
+The initial deployment used an interface specific message structure between
+TDR and TRE.
 
-This ADR documents the generic messaging approach that is to be used
-for V2 message flows.
+This ADR documents the generic messaging approach that is to be used for V2
+message flows.
 
 The V1 TDR-TRE integration is documented [here](../tdr-integration/README.md).
 
@@ -123,24 +123,24 @@ The proposal is to move from this V1 approach:
 To the following:
 
 ```
- tre-in                                                    tre-out
- +-----+                       1                           +-----+
- |     |       +-------- TRE Process ---------+         4  |     |
- |     | ----> | +-----+     +---+     +----+ | ---------> |     |
- |     |    2  | | SQS | --> | λ | --> | SF | |  3         |     |
- |     |   +-> | +-----+     +---+     +----+ | --+        |     |
- |     |   |   +------------------------------+   |        |     |
- |     |   |                                      |        |     |
- |     |   |         +----------------------------+        |     |
- | SNS |   |         |                                     | SNS |
- |     |   |         |  tre-internal        tre-forward    |     |      
- |     |   |         |     +-----+            +-----+      |     |
- |     |   |         +---> |     | ---------> | SQS | ---> |     |  
- |     |   |          4    | SNS |            +-----+      |     |
- |     |   |               |     | --+                     |     |
- |     |   |               +-----+   |                     |     |
- |     |   +-------------------------+                     |     |
- +-----+                                                   +-----+
+ tre-in                                                       tre-out
+ +-----+                       1                              +-----+
+ |     |       +-------- TRE Process ---------+            4  |     |
+ |     | ----> | +-----+     +---+     +----+ | ------------> |     |
+ |     |    2  | | SQS | --> | λ | --> | SF | |  3            |     |
+ |     |   +-> | +-----+     +---+     +----+ | --+           |     |
+ |     |   |   +------------------------------+   |           |     |
+ |     |   |                                      |           |     |
+ |     |   |     +--------------------------------+           |     |
+ | SNS |   |     |                                            | SNS |
+ |     |   |     |  tre-internal    +--- tre-forward ---+     |     |      
+ |     |   |     |    +-----+       | +-----+     +---+ |  4  |     |
+ |     |   |     +--> |     | ----> | | SQS | --> | λ | |---> |     |  
+ |     |   |      4   | SNS |       | +-----+     +---+ |     |     |
+ |     |   |          |     | --+   +-------------------+     |     |
+ |     |   |          +-----+   |                             |     |
+ |     |   +--------------------+                             |     |
+ +-----+                                                      +-----+
 
 1 : E.g. validate-bagit, dri-preingest-sip
 2 : Process can subscribe to tre-in or tre-internal 

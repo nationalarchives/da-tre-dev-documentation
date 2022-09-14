@@ -24,7 +24,7 @@ TRE-Out SNS Topic Owner (TRE) creates subscription using the endpoint given by t
 
 ### SQS Subscription Method 
 
-Other teams (TDR, DRI etc) provide TRE a SQS ARN as an endpint which can be used to create subscription manually using AWS Consle. After that a message is sent to the SQS Queue whoch includes 'SubscribeURL' that needs to be visted to confirm the subscription.
+Other teams (TDR, DRI etc) provide TRE a SQS ARN as an endpint which can be used to create subscription manually using AWS Consle. After that a message is sent to the SQS Queue which includes 'SubscribeURL' that needs to be visted to confirm the subscription.
 
 > **Warning**
 >

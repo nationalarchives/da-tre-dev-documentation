@@ -4,7 +4,7 @@ Date: 15-09-2022
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
@@ -20,11 +20,9 @@ Team that wishes to subscribe (TDR, DRI etc) creates a role which has `sns:Subsc
 * Cons
     * Anyone who assumes the Role created by the other team (TDR, DRI etc) can create any subscripton. (Goes against 'The principle of least privilege')
 
-### Option 2
+### Option 2 - SQS Subscription Method
 
 TRE-Out SNS Topic Owner (TRE) creates subscription using the endpoint given by the other team (TDR, DRI etc)
-
-#### SQS Subscription Method 
 
 Other teams (TDR, DRI etc) provide TRE a SQS ARN as an endpoint which can be used to create subscription manually using AWS Consle. After that a message is sent to the SQS Queue which includes 'SubscribeURL' that needs to be visted to confirm the subscription.
 
@@ -38,7 +36,7 @@ Other teams (TDR, DRI etc) provide TRE a SQS ARN as an endpoint which can be use
     * Manual process
     * Requires actions from both teams
 
-#### Lambda Subscription Method
+### Option 3 - Lambda Subscription Method
 
 TRE creates a Role which has `lambda:AddPermission` on endpoint Lambda given by the other teams (TDR, DRI etc) to create TRE-Out SNS Subscription which will create a Trigger for the endpoint Lambda.
 

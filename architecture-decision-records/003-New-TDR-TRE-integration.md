@@ -7,7 +7,7 @@
     * [TRE Event payload structure changes](#tre-event-payload-structure-changes)
       * [Message UUIDs](#message-uuids)
     * [SQS-backed SNS topic communication](#sqs-backed-sns-topic-communication)
-    * [TDR to TRE new-bagit Event](#tdr-to-tre-new-bagit-event)
+    * [TDR to TRE bagit-available Event](#tdr-to-tre-bagit-available-event)
     * [TRE validate-bagit Process](#tre-validate-bagit-process)
       * [TRE bagit-validated Event](#tre-bagit-validated-event)
       * [TRE bagit-validation-error Event](#tre-bagit-validation-error-event)
@@ -69,18 +69,18 @@ Prior schema used to perform top-level message validation (not `parameters`):
 
 JSON message key descriptions:
 
-| Key                    | Description                                                                           |
-|------------------------|---------------------------------------------------------------------------------------|
-| `version`              | Version of the message being sent                                                     |
-| `timestamp`            | Creation time in nanoseconds UTC                                                      |
-| `UUIDs`                | UUIDs for this message and all prior messages; see [Message UUIDs](#message-uuids)    |
-| `producer`             | Dictionary specifying the event-name being sent and details about the producer        |
-| `producer.name`        | The message producer (e.g. TRE, TDR, etc)                                             |
-| `producer.process`     | The name of the process that creates the message (e.g. `validate-bagit`)              |
-| `producer.type`        | The name of the consignment type being passed; `standard`, `judgment` or null         |
-| `producer.environment` | The name of the environment that creates the message (e.g. `test`, `production`, etc) |
-| `producer.event-name`  | The name of the event being propagated (e.g. `new-bagit`, `bagit-validated`, etc)     |
-| `parameters`           | Data specific to `producer.event-name` in a sub-section with that name                |
+| Key                    | Description                                                                             |
+|------------------------|-----------------------------------------------------------------------------------------|
+| `version`              | Version of the message being sent                                                       |
+| `timestamp`            | Creation time in nanoseconds UTC                                                        |
+| `UUIDs`                | UUIDs for this message and all prior messages; see [Message UUIDs](#message-uuids)      |
+| `producer`             | Dictionary specifying the event-name being sent and details about the producer          |
+| `producer.name`        | The message producer (e.g. TRE, TDR, etc)                                               |
+| `producer.process`     | The name of the process that creates the message (e.g. `validate-bagit`)                |
+| `producer.type`        | The name of the consignment type being passed; `standard`, `judgment` or null           |
+| `producer.environment` | The name of the environment that creates the message (e.g. `test`, `production`, etc)   |
+| `producer.event-name`  | The name of the event being propagated (e.g. `bagit-available`, `bagit-validated`, etc) |
+| `parameters`           | Data specific to `producer.event-name` in a sub-section with that name                  |
 
 #### Message UUIDs
 
@@ -148,9 +148,9 @@ To the following:
 4 : SNS publish call must add message's producer fields as SNS MessageAttributes
 ```
 
-### TDR to TRE new-bagit Event
+### TDR to TRE bagit-available Event
 
-The current proposal is for TDR to send a `new-bagit` event to the TRE system.
+The current proposal is for TDR to send a `bagit-available` event to the TRE system.
 
 The TRE [`validate-bagit`](#tre-validate-bagit-process) process will listen for 
 these events and process them.
@@ -165,15 +165,15 @@ In the `producer` section:
 | `producer.name`       | `TDR`                    |
 | `producer.type`       | `standard` or `judgment` |
 | `producer.process`    | ?                        |
-| `producer.event-name` | `new-bagit`              |
+| `producer.event-name` | `bagit-available`              |
 
 In the `parameters` section:
 
-| Message Field                                    | Value                                      |
-|--------------------------------------------------|--------------------------------------------|
-| `parameters.new-bagit.resource.value`            | BagIt archive file pre-signed URL          |
-| `parameters.new-bagit.resource-validation.value` | BagIt archive checksum file pre-signed URL |
-| `parameters.new-bagit.reference`                 | Consignment reference                      |
+| Message Field                                    | Value                                            |
+|--------------------------------------------------|--------------------------------------------------|
+| `parameters.bagit-available.resource.value`            | BagIt archive file pre-signed URL          |
+| `parameters.bagit-available.resource-validation.value` | BagIt archive checksum file pre-signed URL |
+| `parameters.bagit-available.reference`                 | Consignment reference                      |
 
 Message and schema examples:
 
@@ -182,7 +182,7 @@ Message and schema examples:
 
 ### TRE validate-bagit Process
 
-The `validate-bagit` process will process `new-bagit` events and either:
+The `validate-bagit` process will process `bagit-available` events and either:
 
 * Succeed and output a `bagit-validated` event
 * Fail to validate the BagIt and output a `bagit-validation-failed` event
@@ -216,7 +216,7 @@ In the `parameters` section:
 
 | Message Field                                | Value                                                     |
 |----------------------------------------------|-----------------------------------------------------------|
-| `parameters.bagit-validated.reference`       | From input message `parameters.new-bagit.reference`       |
+| `parameters.bagit-validated.reference`       | From input message `parameters.bagit-available.reference` |
 | `parameters.bagit-validated.s3-bucket`       | The TRE S3 bucket used to extract and verify the BagIt    |
 | `parameters.bagit-validated.s3-bagit-name`   | The TRE S3 path of the saved input BagIt file             |
 | `parameters.bagit-validated.s3-object-root`  | The TRE S3 folder where the input BagIt file is extracted |
@@ -243,10 +243,10 @@ In the `producer` section:
 
 In the `parameters` section:
 
-| Message Field                                 | Value                                               |
-|-----------------------------------------------|-----------------------------------------------------|
-| `parameters.bagit-validation-error.reference` | From input message `parameters.new-bagit.reference` |
-| `parameters.bagit-validation-error.errors`    | A list of errors from the `validate-bagit` process  |
+| Message Field                                 | Value                                                     |
+|-----------------------------------------------|-----------------------------------------------------------|
+| `parameters.bagit-validation-error.reference` | From input message `parameters.bagit-available.reference` |
+| `parameters.bagit-validation-error.errors`    | A list of errors from the `validate-bagit` process        |
 
 Message and schema examples:
 

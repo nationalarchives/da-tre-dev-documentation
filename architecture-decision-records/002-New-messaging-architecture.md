@@ -36,7 +36,7 @@ This meant we would not be able to run an autonomous system and have to configur
 
 The following is now proposed as the new messaging architecture:
 
-![pic1](../technology-considerations/messaging-architecture/diagrams/tre-exchange-messages-option3.png)
+![pic1](./images/TREv2-judgment-parser.png)
 
 TRE will have two SNS topics:
 

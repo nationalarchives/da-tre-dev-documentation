@@ -1,8 +1,10 @@
 # Parser separation proposal
 
+Date: 28-10-2022
+
 ## Status
 
-Proposed
+In progress
 
 ## Context
 

@@ -13,6 +13,8 @@ on the [TDR -TRE integration page](https://github.com/nationalarchives/da-transf
 
 ## Decision
 
+![pic1](./images/TDR-TRE%20v2-DRI%20-%20integration.png)
+
 The payload must contain the event-name "dri-preingest-sip-available" which is identified under the producer header. 
 
 | Message Field         | Value                                                                                               |

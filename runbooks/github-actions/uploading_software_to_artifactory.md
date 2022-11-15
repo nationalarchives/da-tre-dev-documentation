@@ -176,6 +176,7 @@ or use a aws specific requirements.txt file
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        aws codeartifact login --tool pip --repository [REPOSITORY] --domain [DOMAIN] --domain-owner [DOMAIN ARN NUMBER] --region eu-west-2
         pip install [package name]
         if [ -f requirements_aws.txt ]; then pip install -r requirements_aws.txt; fi
     - name: AWS Published Packages

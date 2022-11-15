@@ -20,19 +20,19 @@ the CLI enter the following command
 
 To do this via the web console - navigate to the "Domains" header under CodeArtifact.
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/domains_1.jpg)
+![](./images/domains_1.jpg)
 
 Click the "Create Domain" button
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/domains_2.jpg)
+![](./images/domains_2.jpg)
 
 This should bring up the following screen, type your domain name and - click create domain.
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/domains_3.jpg)
+![](./images/domains_3.jpg)
 
 Under either method if everything has been done correctly the domain should now be visible alongside it's key.
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/domains_4.jpg)
+![](./images/domains_4.jpg)
 
 ### 2. Creating a repository.
 
@@ -44,23 +44,23 @@ $ aws codeartifact create-repository --domain DOMAIN_NAME --domain-owner $AWS_AC
 
 To do this via the console select the repositories link on the left
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/repository_1.jpg)
+![](./images/repository_1.jpg)
 
 Click the "Create Repository button" and fill in the following screen
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/repository_2.jpg)
+![](./images/repository_2.jpg)
 
 **Note :** If the intention is to make these packages public you can select a package service at this stage.
 
 The next screen will give you the option to create the repository under a domain with the current account or under 
 a different domain under a different account (these accounts need to be linked)
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/repository_3.jpg)
+![](./images/repository_3.jpg)
 
 The next screen will summate the configuration for the repository, if these are correct you can create the repository
 which will be visible like so. 
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/repository_4.jpg)
+![](./images/repository_4.jpg)
 
 ### 3. Uploading a python package to the repository 
 
@@ -136,11 +136,11 @@ setup(
 
 A successful deployment should be viewable through the console in its respective repository
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/package_1.jpg)
+![](./images/package_1.jpg)
 
 previous versions of the package can be viewed from clicking the package name
 
-![](/home/aford/IdeaProjects/da-transform-dev-documentation/runbooks/github-actions/images/package_2.jpg)
+![](./images/package_2.jpg)
 
 ### 4. Using a Python package in a project
 

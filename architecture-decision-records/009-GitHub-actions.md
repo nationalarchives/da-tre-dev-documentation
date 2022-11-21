@@ -35,4 +35,6 @@ TRE team will run a SPIKE to evaluate the GitHub Actions platform using the GitH
 
 ## Consequences
 
-N/A
+GitHub Action platform [tre-environments](https://github.com/nationalarchives/tre-environments) will be the CI/CD new platform for deploying changes about TRE V2.
+
+TRE V1 will still use the existing CI/CD pipeline built in AWS, but it will be decomissioned at some point in the future when TRE V2 will be release to production.

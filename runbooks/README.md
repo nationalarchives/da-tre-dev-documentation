@@ -12,3 +12,4 @@
 | [How to create users in TRE accounts](./how-to-create-users-in-TRE-accounts/README.md) |                                                                                       |
 | [GitHub actions integration](./github-actions/README.md)                               |                                                                                       |
 | [Using CodeArtifact](./github-actions/uploading_software_to_artifactory.md)            | A guide for creating domains, repositories and uploading packages to AWS codeartifact |
+| [simulate-tdr-bag-available-v2](simulate-tdr-bag-available-v2/README.md)               | How to manually submit a `bagit-available` event into TRE for developer testing       |

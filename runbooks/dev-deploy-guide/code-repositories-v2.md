@@ -23,8 +23,8 @@ The step functions in these modules use containers for their lambda functions, t
 - [tre-fn-slack-alerts](https://github.com/nationalarchives/tre-fn-slack-alerts)
 
 The functions use some common libraries pulled from CodeArtifact.  The libraries/actions to build/publish them are here:
-- [tre-event-library](https://github.com/nationalarchives/tre-event-library)
-- [tre-s3-library](https://github.com/nationalarchives/tre-s3-library)
+- [tre-lib-event-library](https://github.com/nationalarchives/tre-lib-event-library)
+- [tre-lib-s3-library](https://github.com/nationalarchives/tre-lib-s3-library)
 
 # notes on other/related/v1 repos 
 

@@ -1,6 +1,6 @@
 # Code Repositories for v2
 
-The Platform and the environments are built from:
+The platform and the environments are built from:
 - [tre-terraform-platform](https://github.com/nationalarchives/tre-terraform-platform)
 - [tre-terraform-environments](https://github.com/nationalarchives/tre-terraform-environments)
 

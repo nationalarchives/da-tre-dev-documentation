@@ -40,8 +40,6 @@ For even more completeness there are 5 other repos that relate to v1
 - [da-transform-judgments-pipeline](https://github.com/nationalarchives/da-transform-judgments-pipeline)
 - [da-transform-schemas](https://github.com/nationalarchives/da-transform-schemas)
 
-And v1 itself has an empty repo at: [transformation-alpha](https://github.com/nationalarchives/transformation-alpha) to be deleted
-
 And, related but not "owned by tre" is the judgement parser itself which is at: 
 - [tna-judgments-parser](https://github.com/nationalarchives/tna-judgments-parser)
 

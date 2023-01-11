@@ -28,5 +28,16 @@ The functions use some common libraries pulled from CodeArtifact.  The libraries
 
 For completeness note that:
 - v1 modules are not included above (they are listed elsewhere)
-- there is sample data in [da-transform-sample-data](https://github.com/nationalarchives/da-transform-sample-data)
+- there is sample data relevant to v1 and v2 in [da-transform-sample-data](https://github.com/nationalarchives/da-transform-sample-data)
+- there is this repo (just to get it all on this list) = [da-transform-dev-documentation](https://github.com/nationalarchives/da-transform-dev-documentation)
 - some v2 prototype work is in [tre-blueprint-test-repository](https://github.com/nationalarchives/tre-blueprint-test-repository)
+
+For even more completeness there are 5 other repos that relate to v1
+- [da-transform-terraform-environments](https://github.com/nationalarchives/da-transform-terraform-environments)
+- [da-transform-terraform-modules](https://github.com/nationalarchives/da-transform-terraform-modules)
+- [da-transform-judgments-pipeline](https://github.com/nationalarchives/da-transform-judgments-pipeline)
+- [da-transform-schemas](https://github.com/nationalarchives/da-transform-schemas)
+
+And, related but not "owned by tre" is the judgement parser itself which is at: 
+- [tna-judgments-parser](https://github.com/nationalarchives/tna-judgments-parser)
+

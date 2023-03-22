@@ -1,5 +1,9 @@
 # Beta MVP Transformation pipeline architecture
 
+```diff 
+- This relates to TRE V1
+```
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Beta MVP AWS Architecture diagram](#beta-mvp-aws-architecture-diagram)

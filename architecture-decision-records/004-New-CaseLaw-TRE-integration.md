@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Proposed ___22-03-2023 This is now deprecated see this [repository](https://github.com/nationalarchives/da-transform-schemas/tree/main/tre_schemas) for the latest message schemas and structure___.
 
 ## Context
 

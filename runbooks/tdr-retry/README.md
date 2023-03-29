@@ -1,5 +1,9 @@
 # Manually Triggering A TDR Retry Request
 
+```diff 
+- This relates to TRE V1
+```
+
 A TDR retry can be triggered using the following manual steps:
 
 1. Find the Consignment's most recent execution in the `Step Functions`

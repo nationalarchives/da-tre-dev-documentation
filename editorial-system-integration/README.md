@@ -1,5 +1,9 @@
 # Editorial System integration
 
+```diff 
+- This relates to TRE V1
+```
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Message exchange method and format](#message-exchange-method-and-format)

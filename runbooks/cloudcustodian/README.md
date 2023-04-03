@@ -4,12 +4,7 @@
 * This implementation of Cloud Custodian includes the following alerts and automated remediations:
 
 | AWS SERVICE | RULE NAME                     | CONDITION                                                   | REMEDIATION                 |
-| ----------- | ----------------------------- | ----------------------------------------------------------- | --------------------------- | 
-| IAM         | Access-key-warn               | Access keys older than 80 days                              | None                        |
-| IAM         | Access-key-disable            | Access keys older than 85 days                              | Disable keys                |
-| IAM         | Access-key-delete             | Access keys older than 90 days                              | Delete keys                 |
-| IAM         | MFA-warn                      | Console user without MFA                                    | None                        |
-| IAM         | Dormant-users                 | Inactive for more than 30 days                              | None
+| ----------- | ----------------------------- | ----------------------------------------------------------- | --------------------------- |
 | S3          | Mark-unencrypted              | S3 bucket not encrypted                                     | Mark for deletion in 3 days | 
 | S3          | Unmark-encrypted              | Previously marked S3 bucket now encrypted                   | Remove mark                 | 
 | S3          | Delete-marked-unencrypted     | Marked S3 bucket date condition met                         | Terminate instance          | 
@@ -19,7 +14,7 @@
 | S3          | Delete-marked-public-policy   | Marked S3 bucket date condition met                         | Terminate instance          | 
 | S3          | Check-for-public-access-block | S3 bucket without public access block                       | Set public access block     |
 | ECR         | Ecr-scan-on-push              | Image Scanning on push not enabled                          | Set Scanning on push        |
-| SecurityHub | Inspector-ecr-findings        | Ecr image vulnerability findings                            | None                        |
+| 
 
 ## USAGE
 

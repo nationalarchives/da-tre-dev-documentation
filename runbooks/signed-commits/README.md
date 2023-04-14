@@ -1,9 +1,24 @@
 # Configure Signed Commits
 
-[Signed Commits](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification/signing-commits) are used to help to protect against supply chain & impersonation attacks by ensuring Git commits are verified as genuine through the use of GPG keys.
+[Signed Commits](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification/signing-commits) are used to help to protect against supply chain & impersonation attacks by ensuring Git commits are verified as genuine through the use of a cryptographic key.
+
+The easiest way to do this is to use SSH keys (which are likely part of your existing developer workflow).  Using this method negates the need to install or configure GPG.  That method is documented below.
+
+# With an existing SSH Key
+See the following guide 
+https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key
+
+This usually boils down to:
+```
+git config --global gpg.format ssh
+git config --global user.signingkey /PATH/TO/.SSH/KEY.PUB
+git config --global commit.gpgsign true
+```
+You're done.
+
+# With GPG
 
 An alternative setup guide is [here](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html).
-
 ## Local Configuration
 1. Install a GPG Client:
 

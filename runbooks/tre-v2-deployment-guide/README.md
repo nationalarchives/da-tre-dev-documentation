@@ -2,7 +2,7 @@
 
 TRE v2 is now deployed using GitHub Action workflows.
 
-Specific deployment documentation is available at the following locations: 
+Specific deployment documentation is available at the following locations:
 
 | Repository/Guide | Description | GitHub Action Workflow(s) |
 | ---------------- | ----------- | ------------------------- |

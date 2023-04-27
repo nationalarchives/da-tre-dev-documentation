@@ -1,6 +1,6 @@
 # Manually Triggering A TDR Retry Request
 
-```diff 
+```diff
 - This relates to TRE V1
 ```
 

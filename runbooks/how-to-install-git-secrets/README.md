@@ -17,9 +17,9 @@ Homebrew downloads sometimes take a while, especially if you have not used Homeb
 
 1. Create a new folder in your user home where you will install git secrets, for example `mkdir -p ~/Applications/git-secret`
 2. Clone the GitHub repo [git-secrets](https://github.com/awslabs/git-secrets)
-3. run the command 
+3. run the command
 ```bash
-PREFIX="~/Applications/git-secret" make install 
+PREFIX="~/Applications/git-secret" make install
 ```
 4. Export the path in your bash profile, for example in the `~/.zprofile`
 ```bash

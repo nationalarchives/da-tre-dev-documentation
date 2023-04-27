@@ -10,15 +10,15 @@ Accepted ___22-03-2023 This is now deprecated see this [repository](https://gith
 
 As part of the TRE enhancements we wish to work towards a more decoupled messaging system.
 
-The decoupling will allow for 
+The decoupling will allow for
 - a more autonomous behaviour within the system for TRE and others to take advantage of.
-- consumers can listen to any message and act on them if required. 
+- consumers can listen to any message and act on them if required.
 - no configuration be required for a third party to add a consumer
 
 To aid with this system enhancement a new [Enhanced message structure](./001-Enhanced-message-structure.md) will be required between TRE and other systems.
 
-The new architecture has to follow the Event-driven approach, with 
-- event producers, 
+The new architecture has to follow the Event-driven approach, with
+- event producers,
 - event consumers.
 
 
@@ -55,7 +55,6 @@ For more details about the integrations between TRE and other systems have a loo
 
 ## Consequences
 
-With this architecture any integration with TRE is much simpler, any new service can be a producer and/or a consumer by subscribing to the two topics **tre-in** and **tre-out**. 
+With this architecture any integration with TRE is much simpler, any new service can be a producer and/or a consumer by subscribing to the two topics **tre-in** and **tre-out**.
 
 A monitoring tool system can easly consume messages from **tre-out** topic.
-

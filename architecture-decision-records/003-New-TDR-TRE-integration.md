@@ -57,7 +57,7 @@ The following top-level JSON message format is proposed:
   },
   "parameters": {
     "example-event": {
-      
+
     }
   }
 }
@@ -103,7 +103,7 @@ Example UUIDs section:
 }
 ```
 
-> Multiple UUID values could be added by a Step Function if multiple Lambda 
+> Multiple UUID values could be added by a Step Function if multiple Lambda
   functions within the Step Function each append a UUID to the message chain
 
 ### SQS-backed SNS topic communication
@@ -133,9 +133,9 @@ To the following:
  |     |   |                                      |           |     |
  |     |   |     +--------------------------------+           |     |
  | SNS |   |     |                                            | SNS |
- |     |   |     |  tre-internal    +--- tre-forward ---+     |     |      
+ |     |   |     |  tre-internal    +--- tre-forward ---+     |     |
  |     |   |     |    +-----+       | +-----+     +---+ |  4  |     |
- |     |   |     +--> |     | ----> | | SQS | --> | λ | |---> |     |  
+ |     |   |     +--> |     | ----> | | SQS | --> | λ | |---> |     |
  |     |   |      4   | SNS |       | +-----+     +---+ |     |     |
  |     |   |          |     | --+   +-------------------+     |     |
  |     |   |          +-----+   |                             |     |
@@ -143,7 +143,7 @@ To the following:
  +-----+                                                      +-----+
 
 1 : E.g. validate-bagit, dri-preingest-sip
-2 : Process can subscribe to tre-in or tre-internal 
+2 : Process can subscribe to tre-in or tre-internal
 3 : Process can publish to tre-out or tre-internal
 4 : SNS publish call must add message's producer fields as SNS MessageAttributes
 ```
@@ -152,7 +152,7 @@ To the following:
 
 The current proposal is for TDR to send a `bagit-available` event to the TRE system.
 
-The TRE [`validate-bagit`](#tre-validate-bagit-process) process will listen for 
+The TRE [`validate-bagit`](#tre-validate-bagit-process) process will listen for
 these events and process them.
 
 The TDR system is expected to set the following properties in the event payload
@@ -186,7 +186,7 @@ The `validate-bagit` process will process `bagit-available` events and either:
 
 * Succeed and output a `bagit-validated` event
 * Fail to validate the BagIt and output a `bagit-validation-failed` event
-* Fail with a Step Function error; in this case no TRE event will be outputted 
+* Fail with a Step Function error; in this case no TRE event will be outputted
 
 On receipt of an event the process will:
 

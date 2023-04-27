@@ -8,14 +8,14 @@ In progress ___22-03-2023 While much of the information here is still current th
 
 ## Context
 
-In order to facilitate integration with DRI, message payloads will need to contain headers that can be ingested by DRI. Further context as to message structure can be found 
+In order to facilitate integration with DRI, message payloads will need to contain headers that can be ingested by DRI. Further context as to message structure can be found
 on the [TDR -TRE integration page](https://github.com/nationalarchives/da-transform-dev-documentation/blob/master/architecture-decision-records/003-New-TDR-TRE-integration.md#tdr-to-tre-new-bagit-event)
 
 ## Decision
 
 ![pic1](./images/TDR-TRE%20v2-DRI%20-%20integration.png)
 
-The payload must contain the event-name "dri-preingest-sip-available" which is identified under the producer header. 
+The payload must contain the event-name "dri-preingest-sip-available" which is identified under the producer header.
 
 | Message Field         | Value                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------|

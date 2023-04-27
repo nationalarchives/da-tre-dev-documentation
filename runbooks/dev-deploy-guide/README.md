@@ -151,7 +151,7 @@ updated, some may not; adjust the following steps accordingly:
     5. Build and push Lambda Function Docker image(s) to ECR:
 
         1. Ensure the correct version is set for the Lambda Function
-        
+
             > For `tre-editorial-integration` this is: [`tre-editorial-integration/version.sh`](https://github.com/nationalarchives/da-transform-judgments-pipeline/blob/main/lambda_functions/tre-editorial-integration/version.sh)
 
         2. Run the Lambda Function's build script

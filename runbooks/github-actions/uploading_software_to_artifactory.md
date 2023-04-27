@@ -52,26 +52,26 @@ Click the "Create Repository button" and fill in the following screen
 
 **Note :** If the intention is to make these packages public you can select a package service at this stage.
 
-The next screen will give you the option to create the repository under a domain with the current account or under 
+The next screen will give you the option to create the repository under a domain with the current account or under
 a different domain under a different account (these accounts need to be linked)
 
 ![](./images/repository_3.jpg)
 
 The next screen will summate the configuration for the repository, if these are correct you can create the repository
-which will be visible like so. 
+which will be visible like so.
 
 ![](./images/repository_4.jpg)
 
-### 3. Uploading a python package to the repository 
+### 3. Uploading a python package to the repository
 
 This is achieved via a github actions workflow - an example of which is below.
 
 Sections surrounded by square brackets will need to be replaced with project specific
-configurations. These can be stored as secrets within the repository. 
+configurations. These can be stored as secrets within the repository.
 
-This can be triggered via an automated workflow or manually. 
+This can be triggered via an automated workflow or manually.
 
-**Note :** The following workflow makes the assumption that a setup.py file is 
+**Note :** The following workflow makes the assumption that a setup.py file is
 located at the root level of your project, an example of this can be found below.
 
 ```yaml
@@ -106,7 +106,7 @@ jobs:
         run: |
           export TWINE_USERNAME=aws
           export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain tna-test-domain --domain-owner [ARN ACCOUNT NUMBER] --region eu-west-2 --query authorizationToken --output text`
-          export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain tna-test-domain --domain-owner [ARN ACCOUNT NUMBER] --repository tna-test-repo --region eu-west-2 --format pypi --query repositoryEndpoint --output text`          
+          export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain tna-test-domain --domain-owner [ARN ACCOUNT NUMBER] --repository tna-test-repo --region eu-west-2 --format pypi --query repositoryEndpoint --output text`
           python setup.py sdist bdist_wheel --verbose
           twine upload dist/*
 
@@ -132,7 +132,7 @@ setup(
     zip_safe=False
 )
 ```
-**Note :** The version parameter will need to be updated before deployments or the deployment will fail. 
+**Note :** The version parameter will need to be updated before deployments or the deployment will fail.
 
 A successful deployment should be viewable through the console in its respective repository
 
@@ -145,7 +145,7 @@ previous versions of the package can be viewed from clicking the package name
 ### 4. Using a Python package in a project
 
 In order to use the python package a GitHub workflow will need two of the following three code snippets.
-The first step is manditory, and consists of altering the package manager to use Codeartifact as it's 
+The first step is manditory, and consists of altering the package manager to use Codeartifact as it's
 upstream source.
 
 **NOTE :** All parameters in square brackets will need to be replaced.
@@ -154,7 +154,7 @@ upstream source.
 aws codeartifact login --tool pip --repository [REPOSITORY] --domain [DOMAIN] --domain-owner [DOMAIN ARN NUMBER] --region eu-west-2
 ```
 
-alternatively 
+alternatively
 
 ```yaml
 export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain [DOMAIN] --domain-owner [DOMAIN ARN NUMBER] --region eu-west-2 --query authorizationToken --output text`

@@ -62,9 +62,9 @@ Next, select the "Create access key" button under "Access keys for CLI, SDK, & A
 
 
 > **Warning**
-> 
+>
 > The Secret Access Key  shown in the popup will never be available again, do not close the popup window until you have recorded it or you will be unable to use the credentials you have created
-> 
+>
 
 From a command-line, you can now add these details to your CLI and SDK configuration as a named profile by running the following command - we have named it `tna-temporary` in the example here:
 
@@ -84,7 +84,7 @@ Next, you can configure the assume-role configuration - this needs to be done by
 [profile tna-temporary]
 region = eu-west-2
 output = json
- 
+
 [profile tna-temporary-nonprod-admin]
 region = eu-west-2
 output = json
@@ -153,7 +153,7 @@ This will give you session credentials you can use to perform tasks that require
 ```
 ➜  ~ export AWS_ACCESS_KEY_ID=<access_key_from_AWS_console>
 ➜  ~ export AWS_SECRET_ACCESS_KEY=<secret_key_from_AWS_console>
- 
+
 ➜  ~ export AWS_REGION=eu-west-2
 ➜  ~ aws sts assume-role --role-arn <target_role_arn> --role-session-name <example-session-name> --duration-seconds 3600 --serial-number <MFA_token_code_from_AWS_console> --token-code <value_from_authenticator_app>
 {

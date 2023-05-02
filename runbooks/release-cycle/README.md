@@ -11,7 +11,7 @@ Releases are almost always a mixture between human and automated processes. The 
 
 Infrastructure resources are provisioned and maintained using [Terraform](https://www.terraform.io/intro); there are two GitHub repositories used for the Infrastructure-as-Code (IaC) implementation:
 
-- Environments repository: https://github.com/nationalarchives/da-transform-terraform-environments 
+- Environments repository: https://github.com/nationalarchives/da-transform-terraform-environments
     - This repository contains the configuration for setting up the infrastructure using modules contained in the modules repository.
     - The repository has got branches to mirror the different environments required (DEV, TEST, INT, STAGING and PROD)
 - Modules repository: https://github.com/nationalarchives/da-transform-terraform-modules
@@ -24,7 +24,7 @@ The release cycle for infrastructure changes consists of the steps described in 
 
 
 > **Note**
-> 
+>
 > Some changes require to destroy the existing cloud resources and create them with the new settings/configurations, other changes are just modification to the current infrastructure and do not require to destroy cloud resources.
 >
 > In bth cases, terraform and the pipelines are responsible to apply the changes to the infrastructure, and the flow implemented in the pipeline includes a manual approval to decide whether approve or reject the promote the changes to production.

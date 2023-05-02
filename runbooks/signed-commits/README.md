@@ -5,7 +5,7 @@
 The easiest way to do this is to use SSH keys (which are likely part of your existing developer workflow).  Using this method negates the need to install or configure GPG.  That method is documented below.
 
 # With an existing SSH Key
-See the following guide 
+See the following guide
 https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key
 
 This usually boils down to:

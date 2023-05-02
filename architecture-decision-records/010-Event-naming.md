@@ -14,7 +14,7 @@ There was a need to provide consistency around naming for TRE events and process
 
 The below table shows agreed names for Events and Processes, some are for existing and some are for proposed future components. The table does not include an exhaustive list but provides a naming logic which should cover future naming requirements. Generally names should be simple and explain what is happening, e.g. when a new package is available it should be "name-of-package" and then "-available". The input and output of events listed below are illustratative and not comprehensive. It was discussed that for retry events if the retry is just asking for new pre-signed url links then this should be captured by running as a named retry event e.g. bag-available-retry, if the retry is re-running the whole process it will use the normal process name.
 
-It was also discussed that in the future status notifications could be recieved from other services this could use the nomenclature of '-status' e.g. 'dri-status'. 
+It was also discussed that in the future status notifications could be recieved from other services this could use the nomenclature of '-status' e.g. 'dri-status'.
 <br>
 <br>
 

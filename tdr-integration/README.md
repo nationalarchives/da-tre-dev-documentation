@@ -1,6 +1,6 @@
 # TDR integration
 
-```diff 
+```diff
 - This relates to TRE V1
 ```
 

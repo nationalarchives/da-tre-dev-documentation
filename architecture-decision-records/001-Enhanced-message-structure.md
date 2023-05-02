@@ -13,9 +13,9 @@ The current message structure is very TDR-TRE specific. We would like a more gen
 ## Decision
 
 The following is now proposed for the message structures. This is based on the notion that messages:
-- should be able to linked to see the thread. 
+- should be able to linked to see the thread.
     - This is achieved through UUIDs
-    - Every message in a chain adds a new UUID to a 
+    - Every message in a chain adds a new UUID to a
 - should be actionable and allow a model driven approach allowing engines to act on them
     - Achieved by stating resource
 - should define who is sending the message
@@ -26,7 +26,7 @@ The following is now proposed for the message structures. This is based on the n
 ### TDR and TRE interaction
 
 The TDR to TRE message can be constructed as follows
-TDR creates a UUID and states who has produced it  and why with any parameters 
+TDR creates a UUID and states who has produced it  and why with any parameters
 
 ```JSON
 {
@@ -230,8 +230,8 @@ And the response from TDR would be as
 }
 ```
 
-Any errors should also be sent as this could be used to route the package more effectively. 
-Note: just wondering if we should also add error type e.g. warning, critical 
+Any errors should also be sent as this could be used to route the package more effectively.
+Note: just wondering if we should also add error type e.g. warning, critical
 
 If Access need to retry the message would be as
 
@@ -258,7 +258,7 @@ If Access need to retry the message would be as
   		 "reference" : "TRE-TDR-2021-GW3"
     },
   	"Access": {
-  		"errors": [ 
+  		"errors": [
   		  {"error": "validation failed"},
   		  {"error": "xxxx....."}
   		]
@@ -308,5 +308,4 @@ If Access need to retry the message would be as
 
 ## Consequences
 
-The message could become quite big depending on the number of consumers and producers. 
-
+The message could become quite big depending on the number of consumers and producers.

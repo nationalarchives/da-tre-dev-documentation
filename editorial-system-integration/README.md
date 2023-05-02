@@ -1,6 +1,6 @@
 # Editorial System integration
 
-```diff 
+```diff
 - This relates to TRE V1
 ```
 
@@ -18,7 +18,7 @@ The integration between the Transformation Engine (TRE) and the Editorial system
 
 The TRE will produce the following outputs for the Editorial system:
 1. the data payload (the judgment itself)
-2. the XML outputs of the parser 
+2. the XML outputs of the parser
 3. any processing errors so the editorial team can make an assessment on whether the publishing can go ahead
 4. a metadata file (in a JSON format) which contains the TRE version and the text Parser version, as shown below
 ```json
@@ -94,7 +94,7 @@ The message will contain [S3 presigned URLs](https://docs.aws.amazon.com/AmazonS
 The retry mechanism is implemented using an additional AWS SQS queue in the AWS account where the TRE is deployed, as shown in the diagram above:
 
 1. the editorial system should provide TRE with an AWS IAM Role in order to be able to write messages to the queue
-2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" and an empty field for "s3-folder-url" 
+2. the structure of the message is the same structure defined above, with the increment of the field "number-of-retries" and an empty field for "s3-folder-url"
 ```json
   {
     "consignment-reference": "TDR-2022-C67H",
@@ -103,7 +103,7 @@ The retry mechanism is implemented using an additional AWS SQS queue in the AWS 
     "number-of-retries": 1
   }
 ```
-3. when a new message is sent, the TRE will trigger again the text parser stage 
+3. when a new message is sent, the TRE will trigger again the text parser stage
 4. once the text parser stage is complete, TRE will notify again the editorial system about the new output from the text parser
 5. the max number of retries is set to 3
 6. after 3 attempts TRE will go to a state error

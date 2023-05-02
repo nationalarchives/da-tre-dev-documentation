@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-As part of the Non Functional Requirements (NFRs), it is mandatory to implement audit logs which includes having data event logging enabled so that S3 access and Lambda invocations are logged. 
+As part of the Non Functional Requirements (NFRs), it is mandatory to implement audit logs which includes having data event logging enabled so that S3 access and Lambda invocations are logged.
 
 ## Decision
 
@@ -21,7 +21,7 @@ This diagram shows the proposed solution:
 - The CloudTrail logs will be sent to a S3 bucket in the AWS management account
 - The S3 bucket will use the same KMS custom key used to encrypt the CloudTrail logs
 - AWS Athena will be used to query and visualise the data in the S3 bucket
-- The audit logs will be retained in the S3 bucket standard storage class for 60 days, after the data will be moved to the Glacier storage class and retained forever. 
+- The audit logs will be retained in the S3 bucket standard storage class for 60 days, after the data will be moved to the Glacier storage class and retained forever.
 
 
 ## Consequences

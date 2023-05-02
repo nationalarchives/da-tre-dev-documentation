@@ -10,7 +10,7 @@ Accepted
 
 Aggreing on how external teams can subscribe to TRE-Out SNS Topic.
 
-### Option 1 
+### Option 1
 
 Team that wishes to subscribe (TDR, DRI etc) creates a role which has `sns:Subscribe` permission, given by team that owns TRE-Out SNS Topic (TRE), to create subscription.
 
@@ -32,7 +32,7 @@ Other teams (TDR, DRI etc) provide TRE a SQS ARN as an endpoint which can be use
 
 * Pros
     * Adhering to the principle of least privilege
-* Cons 
+* Cons
     * Manual process
     * Requires actions from both teams
 

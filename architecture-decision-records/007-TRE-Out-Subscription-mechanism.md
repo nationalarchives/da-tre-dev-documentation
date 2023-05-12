@@ -54,3 +54,9 @@ Option-2 with the SQS subscription method is the preferred option.
 
 - The consumers which want to subscribe to TRE-OUT topic have to send a request to TRE team with SQS ARN and endpoint
 - TRE team has to create the subscription manually using the AWS console
+
+# New decision
+
+The owner of the topic will add a policy that allows permitted accounts to publish to the topic and/or a permitted account to subcribe a sepcific endpoint to the topic
+* The external account will need to provide the topic owner their account id and subscription endpoint.
+* The policies will be added with terraform

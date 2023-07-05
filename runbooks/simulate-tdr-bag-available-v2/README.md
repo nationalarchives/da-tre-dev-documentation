@@ -21,7 +21,7 @@ This run-book describes how to manually trigger TRE v2 processing by sending a
 ## Setup Environment Variables
 
 * Select a test consignment; this example will use `TDR-2022-D6WD` (from
-  [da-transform-sample-data](https://github.com/nationalarchives/da-transform-sample-data/tree/main/test/resources/small-normal-batch/bagit/v1-2)):
+  [da-tre-sample-data](https://github.com/nationalarchives/da-tre-sample-data/tree/main/test/resources/small-normal-batch/bagit/v1-2)):
 
   ```bash
   CONSIGNMENT_REF='TDR-2022-D6WD'
